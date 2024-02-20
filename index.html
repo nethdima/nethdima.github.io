@@ -6,36 +6,14 @@
   <meta name="copyright" content="NETHDIMA PVT LTD" />
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0" />
-  <meta name="reply-to" content="info@nethdima.github.io" />
   <meta name="url" content="https://nethdima.github.io" />
   <link rel="pingback" href="https://nethdima.github.io" />
   <link rel="shortcut icon" href="https://raw.githubusercontent.com/nethdima/nethdima.github.io/main/nethdima.png" />
-  <link rel="stylesheet" href="nethdima-tv.css" />
   <link rel="stylesheet" href="style.css" />
   <script src="script.js"></script>
   <script src="nethdima-radio.js"></script>
   <title>NETHDIMA</title>
   <style>
-    .video-js {
-      position: relative;
-      width: 100%;
-    }
-
-    .video-js::after {
-      content: "";
-      position: absolute;
-      background: url(nethdima-tv.png);
-      background-size: cover;
-      width: 7.5vw;
-      height: 8vw;
-      right: 20px;
-      top: 20px;
-    }
-
-    .video-js .vjs-fullscreen-control {
-      display: none;
-}
-
 .view-count {
     display: flex;
     flex-direction: column;
@@ -111,9 +89,6 @@
       <br />
       <h3>WHATSAPP</h3>
       <h4>+94 74 168 8487</h4>
-      <br />
-      <h3>EMAIL</h3>
-      <h4>info@nethdima.github.io</h4>
     </div>
   </fieldset>
 
@@ -138,7 +113,7 @@
   </fieldset>
   <div class="view-count">
     <span class="count"><script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1144493/t/5"></script><br>
-    <span class="label">PAGE VIEWS</span>
+    <span class="label">NETHDIMA VIEWS</span>
   </div>
   <footer>
     <h4>
@@ -150,25 +125,8 @@
       NETHDIMA. All Rights Reserved.
     </h4>
   </footer>
-  <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
-  <script type="text/JavaScript" src="zoomrotate.js"></script>
   <script type="text/JavaScript" src="paragraph.js"></script>
   <script>
-    var player = videojs("nethdima-tv", {
-      controls: true,
-      poster:
-        "https://marciemorrison.com/wp-content/uploads/2020/07/SMPTE_Color_Bars_16x9.gif",
-      loop: true,
-      fluid: true,
-      aspectRatio: "16:9",
-      playbackRates: [0.25, 0.5, 1, 1.5, 2],
-    });
-
-    player.zoomrotate({
-      rotate: 0,
-      zoom: 2,
-    });
-
     function radio() {
       newPageTitle = 'NETHDIMA RADIO';
       document.querySelector('title').textContent
@@ -199,51 +157,6 @@
       } else {
         x.innerHTML =
           "Welcome to Nethdima Radio official website. operated by Nethdima Private Limited, this is an online radio channel on the internet dedicated to bringing you music, news, entertainment and more. Since our launch on 21.12.2023, we have been committed to providing a seamless streaming experience. We value your feedback, so feel free to send us your comments, suggestions, accusations, and complaints to help us improve.";
-      }
-
-      var x = document.getElementById("owner");
-      if (x.innerHTML === "") {
-      } else {
-        x.innerHTML = "OWNER";
-      }
-
-      var x = document.getElementById("name");
-      if (x.innerHTML === "") {
-      } else {
-        x.innerHTML = "Nethdima Private Limited";
-      }
-    }
-
-    function tv() {
-      newPageTitle = 'NETHDIMA TV';
-      document.querySelector('title').textContent
-        = newPageTitle;
-      var link = document.querySelector("link[rel~='icon']");
-      if (!link) {
-        link = document.createElement('link');
-        link.rel = 'icon';
-        document.head.appendChild(link);
-      }
-      link.href = 'https://raw.githubusercontent.com/nethdima/nethdima.github.io/main/nethdima-tv.png';
-
-      var x = document.getElementById("tv");
-      if (x.style.display === "block") {
-        x.style.display = "block";
-      } else {
-        x.style.display = "block";
-      }
-      var x = document.getElementById("radio");
-      if (x.style.display === "none") {
-        x.style.display = "none";
-      } else {
-        x.style.display = "none";
-      }
-
-      var x = document.getElementById("info");
-      if (x.innerHTML === "") {
-      } else {
-        x.innerHTML =
-          "Welcome to Nethdima TV official website. operated by Nethdima Private Limited, this is an online TV channel on the internet dedicated to bringing you music, news, movies and more. Since our launch on 21.12.2023, we have been committed to providing a seamless streaming experience. We value your feedback, so feel free to send us your comments, suggestions, accusations, and complaints to help us improve.";
       }
 
       var x = document.getElementById("owner");
