@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A multifunctional company offering 1 radio channel, 3 TV channels, and various other services."
+    />
+    <meta
+      name="keywords"
+      content="Nethdima Media, radio channel, TV channels, multifunctional services"
+    />
+    <meta name="author" content="Nethdima" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta property="og:title" content="Nethdima" />
+    <meta
+      property="og:description"
+      content="A multifunctional company offering 1 radio channel, 3 TV channels, and various other services."
+    />
+    <meta property="og:image" content="nethdima-icon.png" />
+    <meta property="og:url" content="https://nethdima.github.io" />
+    <meta property="og:type" content="website" />
+    <title>Nethdima A Multifunctional Company</title>
+    <link rel="icon" href="nethdima-icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="nethdima-icon-pack/css/all.css" />
+    <style>
+      * {
+        box-sizing: border-box;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        text-decoration: none;
+        list-style: none;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      ::-webkit-scrollbar {
+        width: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Roboto", sans-serif;
+        background-color: #161616;
+        color: #cacaca;
+        margin: 0;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+      }
+
+      video {
+        max-width: 550px;
+        width: 100%;
+        border-radius: 8px;
+        border: 1px double rgb(39, 39, 39);
+      }
+
+      marquee {
+        padding: 10px;
+        padding-bottom: 11px;
+        background-color: red;
+        position: fixed;
+        bottom: 0;
+      }
+
+      .radio-station {
+        padding: 10px;
+      }
+
+      @keyframes progress {
+        0% {
+          width: 0%;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+
+      .radio-container {
+        max-width: 100%;
+        margin: 0 auto;
+        text-align: center;
+      }
+
+      .radio-container h1 {
+        font-size: 24px;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .player-radio-container {
+        position: relative;
+      }
+
+      .play-button {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        transition: background-color 0.3s ease;
+        background-color: #161616;
+        color: #cacaca;
+        border: 1px double white;
+        border-radius: 8px;
+        width: 160px;
+        height: 50px;
+        font-size: 20px;
+        display: inline-block;
+      }
+
+      .play-button i {
+        position: absolute;
+        top: 50%;
+        left: 15px;
+        transform: translateY(-50%);
+        transition: transform 0.3s ease;
+      }
+
+      .play-button img {
+        transition: border-color 0.1s ease-in-out, border-width 1s ease-in-out;
+      }
+
+      .play-text {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .offline-message {
+        display: none;
+        padding: 10px;
+        font-size: 18px;
+        background-color: red;
+        color: rgb(223, 223, 223);
+        border-radius: 5px;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .welcome-message {
+        margin-bottom: 15px;
+      }
+
+      .loading-indicator {
+        display: none;
+        margin: 10px;
+      }
+
+      .loading-bar {
+        height: 5px;
+        border-radius: 5px;
+        background: linear-gradient(to right, #ff5e3a, orange, orange, #ff5e3a);
+        animation: progress 200ms alternate-reverse infinite;
+        position: relative;
+        width: calc(100% - 40px);
+        margin: 0 auto;
+      }
+
+      video.playing {
+        animation: partyBorder 1s infinite linear;
+      }
+
+      @keyframes partyBorder {
+        0% {
+          border-color: red;
+          border-width: 2px;
+        }
+        10% {
+          border-color: yellow;
+          border-width: 4px;
+        }
+        20% {
+          border-color: green;
+          border-width: 2px;
+        }
+        30% {
+          border-color: blue;
+          border-width: 4px;
+        }
+        40% {
+          border-color: goldenrod;
+          border-width: 2px;
+        }
+        50% {
+          border-color: gold;
+          border-width: 4px;
+        }
+        60% {
+          border-color: goldenrod;
+          border-width: 2px;
+        }
+        70% {
+          border-color: blue;
+          border-width: 4px;
+        }
+        80% {
+          border-color: green;
+          border-width: 2px;
+        }
+        90% {
+          border-color: yellow;
+          border-width: 4px;
+        }
+        100% {
+          border-color: red;
+          border-width: 2px;
+        }
+      }
+
+      .notclicklink {
+        display: none;
+        text-align: center;
+        pointer-events: none;
+        max-width: 100px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .notclicklink img {
+        padding-bottom: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="radio-station">
+      <div class="radio-container">
+        <div class="welcome-message">
+          <h1>Welcome to Nethdima</h1>
+          <p>Your gateway to a world of entertainment</p>
+          <p>
+            Now offering a diverse range of services, including radio and TV
+            broadcasting!
+          </p>
+        </div>
+
+        <div class="offline-message" id="offlineMessage">
+          You are currently offline. <br />
+          Please check your internet connection.
+        </div>
+        <div class="player-radio-container">
+          <div class="loading-indicator" id="loadingIndicator1">
+            <div class="loading-bar"></div>
+          </div>
+          <video
+            poster="https://th.bing.com/th/id/OIP.PAZaTTgdE1enB-hh2TPKxwHaEL?rs=1&pid=ImgDetMain"
+            src="https://stream.zeno.fm/eownpnzhffvtv"
+            id="audio1"
+          ></video>
+          <div class="loading-indicator" id="loadingIndicator2">
+            <div class="loading-bar"></div>
+          </div>
+          <button class="play-button" onclick="togglePlayPause('audio1')">
+            <i class="fas fa-play"></i>
+            <span class="play-text">Play</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var currentVideo = null;
+      var loadingIndicatorElements = document.querySelectorAll(
+        "#loadingIndicator1, #loadingIndicator2"
+      );
+      var offlineMessageElement = document.getElementById("offlineMessage");
+
+      function togglePlayPause(videoId) {
+        var video = document.getElementById(videoId);
+        var playPauseBtn = video.parentElement.querySelector(".play-button");
+
+        if (currentVideo !== video) {
+          if (currentVideo) {
+            currentVideo.pause();
+            currentVideo.currentTime = 0;
+            currentVideo.parentElement.querySelector(".play-button").innerHTML =
+              '<i class="fas fa-play"></i><span class="play-text">Play</span>';
+            currentVideo.classList.remove("playing");
+          }
+          currentVideo = video;
+        }
+
+        if (video.paused) {
+          if (navigator.onLine) {
+            // Auto-buffering
+            video.load();
+            video
+              .play()
+              .then(function () {
+                playPauseBtn.innerHTML =
+                  '<i class="fas fa-pause"></i><span class="play-text">Pause</span>';
+                video.parentElement.classList.add("playing");
+                video.classList.add("playing");
+              })
+              .catch(function (error) {
+                console.error("Failed to start playback:", error);
+              });
+          } else {
+            console.error("Cannot play video while offline.");
+          }
+        } else {
+          video.pause();
+          playPauseBtn.innerHTML =
+            '<i class="fas fa-play"></i><span class="play-text">Play</span>';
+          video.parentElement.classList.remove("playing");
+          video.classList.remove("playing");
+          // Fix animation issue
+          video.poster =
+            "https://www.gifcen.com/wp-content/uploads/2022/04/wallpaper-gif-4.gif";
+        }
+
+        video.addEventListener("waiting", function () {
+          loadingIndicatorElements.forEach(function (element) {
+            element.style.display = "block";
+          });
+          playPauseBtn.innerHTML = '<span class="play-text">Loading...</span>';
+          // Fix animation issue
+          video.poster =
+            "https://media.tenor.com/VTUWJ8XiBTIAAAAd/radio-panda.gif";
+        });
+
+        video.addEventListener("playing", function () {
+          loadingIndicatorElements.forEach(function (element) {
+            element.style.display = "none";
+            playPauseBtn.innerHTML =
+              '<i class="fas fa-pause"></i><span class="play-text">Pause</span>';
+            // Fix animation issue
+            video.poster =
+              "https://www.gifcen.com/wp-content/uploads/2022/04/wallpaper-gif-4.gif";
+          });
+        });
+
+        video.addEventListener("pause", function () {
+          loadingIndicatorElements.forEach(function (element) {
+            element.style.display = "none";
+            playPauseBtn.innerHTML =
+              '<i class="fas fa-play"></i><span class="play-text">Play</span>';
+            // Fix animation issue
+            video.poster =
+              "https://th.bing.com/th/id/OIP.yS1Vw32_OJob6WxlGok6BQHaEK?rs=1&pid=ImgDetMain";
+            playPauseBtn.style.borderColor = "green";
+          });
+        });
+
+        video.addEventListener("error", function () {
+          handleVideoError(video);
+        });
+      }
+
+      function togglePlayButtons() {
+        var online = navigator.onLine;
+        var playButtons = document.querySelectorAll(
+          ".play-button, video, marquee"
+        );
+
+        playButtons.forEach(function (button) {
+          button.style.display = online ? "inline-block" : "none";
+          if (online) {
+            button.style.borderColor = "green";
+            button.addEventListener("click", function () {
+              var videoId = this.dataset.videoId;
+              togglePlayPause(videoId);
+            });
+          } else {
+            button.style.borderColor = "none";
+            button.removeEventListener("click", togglePlayPause);
+          }
+        });
+
+        offlineMessageElement.style.display = online ? "none" : "block";
+
+        // Reset video border to none when online
+        if (online && currentVideo) {
+          currentVideo.style.border = "none";
+        }
+      }
+
+      function handleVideoError(video) {
+        console.error("Video error occurred:", video.error);
+        // Handle error by pausing video and showing a message or other error handling logic
+      }
+
+      function removeOfflineMessage() {
+        offlineMessageElement.style.display = "none";
+      }
+
+      function showOfflineMessage() {
+        offlineMessageElement.style.display = "block";
+      }
+
+      window.addEventListener("online", function () {
+        togglePlayButtons();
+        removeOfflineMessage();
+      });
+
+      window.addEventListener("offline", function () {
+        togglePlayButtons();
+        showOfflineMessage();
+        if (currentVideo) {
+          currentVideo.pause();
+        }
+      });
+
+      if (!navigator.onLine) {
+        showOfflineMessage();
+      }
+
+      togglePlayButtons();
+    </script>
+
+    <marquee behavior="scroll" direction="left" scrollamount="5">
+      <span style="font-weight: bold">Dear Valued Viewers,</span>
+      <span
+        >We regret to inform you that Nethdima's three TV channels are currently
+        experiencing temporary suspension due to financial difficulties. We
+        apologize for any inconvenience this may cause and assure you that we
+        are actively working to resolve the situation as swiftly as possible.
+        During this period, we understand the impact it may have on your viewing
+        experience, and we sincerely apologize for any disruption. We assure you
+        that our team is diligently working to address the financial challenges
+        and bring Nethdima's three TV channels back to air at the earliest
+        opportunity. We appreciate your understanding and patience during this
+        time. Please stay tuned to our official communication channels for
+        updates on the situation and any developments regarding the resumption
+        of our broadcasting services. Once again, we apologize for any
+        inconvenience caused and thank you for your continued support. (
+        Nethdima TV, Nethdima Kids TV, Sadaham Nethdima TV )
+        <span style="color: silver"> --- Team of Nethdima --- </span></span
+      >
+    </marquee>
+    <div class="notclicklink">
+      <script
+        type="text/javascript"
+        src="https://www.freevisitorcounters.com/en/home/counter/1144493/t/5"
+      ></script>
+    </div>
+
+    <p
+      style="
+        text-align: center;
+        font-weight: bold;
+        font-size: 12px;
+        margin-bottom: 0;
+      "
+    >
+      Copyright © 2023 - <span id="currentYear"></span> NETHDIMA. <br />
+      All rights reserved.
+    </p>
+    <script>
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+    </script>
+  </body>
+</html>
