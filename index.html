@@ -66,7 +66,7 @@
         max-width: 550px;
         width: 100%;
         border-radius: 8px;
-        border: 1px double rgb(39, 39, 39);
+        border: 1px solid green;
       }
 
       marquee {
@@ -115,7 +115,7 @@
         transition: background-color 0.3s ease;
         background-color: #161616;
         color: #cacaca;
-        border: 1px double white;
+        border: 1px solid green;
         border-radius: 8px;
         width: 160px;
         height: 50px;
@@ -170,57 +170,6 @@
         position: relative;
         width: calc(100% - 40px);
         margin: 0 auto;
-      }
-
-      video.playing {
-        animation: partyBorder 1s infinite linear;
-      }
-
-      @keyframes partyBorder {
-        0% {
-          border-color: red;
-          border-width: 2px;
-        }
-        10% {
-          border-color: yellow;
-          border-width: 4px;
-        }
-        20% {
-          border-color: green;
-          border-width: 2px;
-        }
-        30% {
-          border-color: blue;
-          border-width: 4px;
-        }
-        40% {
-          border-color: goldenrod;
-          border-width: 2px;
-        }
-        50% {
-          border-color: gold;
-          border-width: 4px;
-        }
-        60% {
-          border-color: goldenrod;
-          border-width: 2px;
-        }
-        70% {
-          border-color: blue;
-          border-width: 4px;
-        }
-        80% {
-          border-color: green;
-          border-width: 2px;
-        }
-        90% {
-          border-color: yellow;
-          border-width: 4px;
-        }
-        100% {
-          border-color: red;
-          border-width: 2px;
-        }
       }
 
       .notclicklink {
@@ -298,7 +247,6 @@
 
         if (video.paused) {
           if (navigator.onLine) {
-            // Auto-buffering
             video.load();
             video
               .play()
@@ -320,7 +268,6 @@
             '<i class="fas fa-play"></i><span class="play-text">Play</span>';
           video.parentElement.classList.remove("playing");
           video.classList.remove("playing");
-          // Fix animation issue
           video.poster =
             "https://www.gifcen.com/wp-content/uploads/2022/04/wallpaper-gif-4.gif";
         }
@@ -330,9 +277,10 @@
             element.style.display = "block";
           });
           playPauseBtn.innerHTML = '<span class="play-text">Loading...</span>';
-          // Fix animation issue
           video.poster =
             "https://media.tenor.com/VTUWJ8XiBTIAAAAd/radio-panda.gif";
+          playPauseBtn.style.borderColor = "yellowgreen";
+          currentVideo.style.borderColor = "yellowgreen";
         });
 
         video.addEventListener("playing", function () {
@@ -340,9 +288,10 @@
             element.style.display = "none";
             playPauseBtn.innerHTML =
               '<i class="fas fa-pause"></i><span class="play-text">Pause</span>';
-            // Fix animation issue
             video.poster =
               "https://www.gifcen.com/wp-content/uploads/2022/04/wallpaper-gif-4.gif";
+            playPauseBtn.style.borderColor = "green";
+            currentVideo.style.borderColor = "green";
           });
         });
 
@@ -351,10 +300,10 @@
             element.style.display = "none";
             playPauseBtn.innerHTML =
               '<i class="fas fa-play"></i><span class="play-text">Play</span>';
-            // Fix animation issue
             video.poster =
               "https://th.bing.com/th/id/OIP.yS1Vw32_OJob6WxlGok6BQHaEK?rs=1&pid=ImgDetMain";
-            playPauseBtn.style.borderColor = "green";
+            playPauseBtn.style.borderColor = "red";
+            currentVideo.style.borderColor = "red";
           });
         });
 
@@ -372,28 +321,20 @@
         playButtons.forEach(function (button) {
           button.style.display = online ? "inline-block" : "none";
           if (online) {
-            button.style.borderColor = "green";
             button.addEventListener("click", function () {
               var videoId = this.dataset.videoId;
               togglePlayPause(videoId);
             });
           } else {
-            button.style.borderColor = "none";
             button.removeEventListener("click", togglePlayPause);
           }
         });
 
         offlineMessageElement.style.display = online ? "none" : "block";
-
-        // Reset video border to none when online
-        if (online && currentVideo) {
-          currentVideo.style.border = "none";
-        }
       }
 
       function handleVideoError(video) {
         console.error("Video error occurred:", video.error);
-        // Handle error by pausing video and showing a message or other error handling logic
       }
 
       function removeOfflineMessage() {
@@ -444,13 +385,24 @@
         <span style="color: silver"> --- Team of Nethdima --- </span></span
       >
     </marquee>
-    <div class="notclicklink">
-      <script
-        type="text/javascript"
-        src="https://www.freevisitorcounters.com/en/home/counter/1144493/t/5"
-      ></script>
-    </div>
-
+    <table>
+      <td
+        style="
+          padding-bottom: 8px;
+          padding-right: 5px;
+          border-radius: 10px;
+          font-weight: bold;
+        "
+      >
+        Visitor :
+      </td>
+      <td class="notclicklink">
+        <script
+          type="text/javascript"
+          src="https://www.freevisitorcounters.com/en/home/counter/1144493/t/5"
+        ></script>
+      </td>
+    </table>
     <p
       style="
         text-align: center;
