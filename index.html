@@ -5,27 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="A multifunctional company offering 1 radio channel, 3 TV channels, and various other services."
+      content="Nethdima is your go-to platform for online radio and TV broadcasting, offering a wide range of channels and shows for all tastes."
     />
     <meta
       name="keywords"
-      content="Nethdima Media, radio channel, TV channels, multifunctional services"
+      content="Nethdima, online radio, TV broadcasting, live streaming, internet radio, online TV, entertainment, shows, music, news"
     />
     <meta name="author" content="Nethdima" />
     <meta name="robots" content="index, follow" />
     <meta name="theme-color" content="#ffffff" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta property="og:title" content="Nethdima" />
+    <meta
+      property="og:title"
+      content="Nethdima - Online Radio & TV Broadcasting"
+    />
     <meta
       property="og:description"
-      content="A multifunctional company offering 1 radio channel, 3 TV channels, and various other services."
+      content="Tune in to Nethdima for the best online radio and TV broadcasting experience. Enjoy a diverse range of channels and programs."
     />
-    <meta property="og:image" content="nethdima-icon.png" />
+    <meta property="og:image" content="nethdima-img/nethdima-logo-img.png" />
     <meta property="og:url" content="https://nethdima.github.io" />
     <meta property="og:type" content="website" />
-    <title>Nethdima A Multifunctional Company</title>
-    <link rel="icon" href="nethdima-icon.png" type="image/x-icon" />
-    <link rel="stylesheet" href="nethdima-icon-pack/css/all.css" />
+    <title>Nethdima - Online Radio & TV Broadcasting</title>
+    <link
+      rel="icon"
+      href="nethdima-img/nethdima-logo-img.png"
+      type="image/x-icon"
+    />
+    <link href="https://vjs.zencdn.net/7.15.4/video-js.css" rel="stylesheet" />
+    <script src="https://vjs.zencdn.net/7.15.4/video.min.js"></script>
     <style>
       * {
         box-sizing: border-box;
@@ -39,6 +47,8 @@
         scrollbar-width: none;
         margin: 0;
         padding: 0;
+        outline: none;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       }
 
       ::-webkit-scrollbar {
@@ -50,373 +60,1535 @@
       }
 
       body {
-        font-family: "Roboto", sans-serif;
-        background-color: #161616;
-        color: #cacaca;
-        margin: 0;
-        padding: 0;
+        background-color: #eee;
+        color: #181818;
+        overflow: hidden;
+        line-height: 1.5;
+        text-align: justify;
+      }
+
+      header {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        height: 55px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background-color: #fff;
+        border-bottom: 1px solid #e6e6e6;
+        padding: 10px;
+        z-index: 1000;
+      }
+
+      header p {
+        flex: 1;
+        margin-bottom: 0;
+        font-size: 25px;
+        font-weight: bold;
+      }
+
+      header h5 {
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+
+      .container {
+        margin-top: 55px;
+        display: flex;
         justify-content: center;
         align-items: center;
-        display: flex;
-        flex-direction: column;
-        height: 100vh;
       }
 
-      video {
-        max-width: 550px;
+      .content,
+      .menu,
+      .tv,
+      .fm,
+      .music-lessons {
         width: 100%;
-        border-radius: 8px;
-        border: 1px solid green;
+        height: calc(100vh - 55px);
+        padding: 15px;
+        justify-content: center;
+        align-items: center;
+        background-color: #ffffff;
+        border: 1px solid #e6e6e6;
+        overflow: auto;
       }
 
-      marquee {
-        padding: 10px;
-        padding-bottom: 11px;
-        background-color: red;
-        position: fixed;
-        bottom: 0;
-      }
-
-      .radio-station {
-        padding: 10px;
-      }
-
-      @keyframes progress {
-        0% {
-          width: 0%;
-        }
-        100% {
-          width: 100%;
-        }
-      }
-
-      .radio-container {
-        max-width: 100%;
-        margin: 0 auto;
-        text-align: center;
-      }
-
-      .radio-container h1 {
-        font-size: 24px;
-        margin-bottom: 10px;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-      }
-
-      .player-radio-container {
-        position: relative;
-      }
-
-      .play-button {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        transition: background-color 0.3s ease;
-        background-color: #161616;
-        color: #cacaca;
-        border: 1px solid green;
-        border-radius: 8px;
-        width: 160px;
-        height: 50px;
-        font-size: 20px;
-        display: inline-block;
-      }
-
-      .play-button i {
-        position: absolute;
-        top: 50%;
-        left: 15px;
-        transform: translateY(-50%);
-        transition: transform 0.3s ease;
-      }
-
-      .play-button img {
-        transition: border-color 0.1s ease-in-out, border-width 1s ease-in-out;
-      }
-
-      .play-text {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-      }
-
-      .offline-message {
-        display: none;
-        padding: 10px;
-        font-size: 18px;
-        background-color: red;
-        color: rgb(223, 223, 223);
-        border-radius: 5px;
-        text-align: center;
-        margin-bottom: 10px;
-      }
-
-      .welcome-message {
-        margin-bottom: 15px;
-      }
-
-      .loading-indicator {
-        display: none;
+      .music-lessons details {
         margin: 10px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #e6e6e6;
       }
 
-      .loading-bar {
-        height: 5px;
+      .menu details {
         border-radius: 5px;
-        background: linear-gradient(to right, #ff5e3a, orange, orange, #ff5e3a);
-        animation: progress 200ms alternate-reverse infinite;
-        position: relative;
-        width: calc(100% - 40px);
-        margin: 0 auto;
+        border: 1px solid #e6e6e6;
+        padding: 0px;
+        margin-bottom: 10px;
       }
 
-      .notclicklink {
-        display: none;
+      .menu summary,
+      .menu dl {
+        font-weight: bold;
+        font-size: 13px;
+        border: 1px solid #e6e6e6;
+        padding: 10px;
+      }
+
+      .menu ul {
+        padding: 5px;
+        list-style-type: none;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .menu li {
+        flex: 1;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+        margin: 5px;
+        font-size: 15px;
+        font-weight: normal;
         text-align: center;
-        pointer-events: none;
-        max-width: 100px;
-        display: block;
-        margin-left: auto;
-        margin-right: auto;
+        background-color: #ffffff;
+        border: 1px solid #e6e6e6;
+        border-radius: 5px;
+        white-space: nowrap;
       }
 
-      .notclicklink img {
-        padding-bottom: 20px;
+      img,
+      video {
+        position: relative;
+        width: 100%;
+        background-size: cover;
+      }
+
+      .video-1 {
+        margin: 10px auto;
+      }
+
+      .video-js {
+        position: relative;
+        width: 100%;
+        padding-top: 56.25%;
+        margin: 10px auto;
+        background-size: cover;
+      }
+      .vjs-modal-dialog-content,
+      #home,
+      .menu,
+      .music-lessons {
+        display: none;
+      }
+
+      .table1 {
+        width: 100%;
+        margin: 10px auto;
+        text-align: center;
+        border-collapse: collapse;
+      }
+
+      .table1 th,
+      .table1 td {
+        border: 1px #e6e6e6 solid;
+        padding: 5px;
+        padding-bottom: 10px;
+      }
+
+      @media only screen and (max-width: 1200px) {
+        body {
+          overflow: auto;
+          max-width: 600px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+
+        header {
+          max-width: 600px;
+        }
+
+        .container {
+          flex-direction: column;
+        }
+
+        .content,
+        .menu,
+        .tv,
+        .fm,
+        .music-lessons {
+          width: 100%;
+          height: auto;
+        }
+      }
+
+      .dark-mode {
+        background-color: #161616;
+        color: #d3d3d3;
+      }
+
+      .dark-mode header {
+        background-color: #282828;
+        border-color: #303030;
+      }
+
+      .dark-mode .content,
+      .dark-mode .menu,
+      .dark-mode .menu li,
+      .dark-mode .tv,
+      .dark-mode .fm,
+      .dark-mode .music-lessons,
+      .dark-mode .music-lessons details,
+      .dark-mode .menu details,
+      .dark-mode .menu summary,
+      .dark-mode .menu dl,
+      .dark-mode .table1 th,
+      .dark-mode .table1 td {
+        background-color: #202020;
+        color: #d3d3d3;
+        border-color: #303030;
+      }
+
+      .dark-mode strong,
+      .dark-mode b {
+        color: #e4e4e4;
+      }
+
+      p,
+      li {
+        margin-bottom: 10px;
+      }
+
+      details:last-child,
+      h3:last-child,
+      p:last-child,
+      img:last-child,
+      table:last-child,
+      .video-js:last-child,
+      video:last-child,
+      .menu summary:last-child,
+      .menu dl:last-child {
+        margin-bottom: 0px;
+      }
+
+      .music-lessons details:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
       }
     </style>
   </head>
   <body>
-    <div class="radio-station">
-      <div class="radio-container">
-        <div class="welcome-message">
-          <h1>Welcome to Nethdima</h1>
-          <p>Your gateway to a world of entertainment</p>
+    <header>
+      <p>NETHDIMA</p>
+      <h5 onclick="backHome(); scrollToSectionWithGap('tv');" id="home">
+        HOME
+      </h5>
+      <h5 onclick="openNav(); scrollToSectionWithGap('menu');" id="menu">
+        MENU
+      </h5>
+      <h5 onclick="toggleDarkMode()" id="dark-light-text">DARK</h5>
+      <h5 onclick="backHome(); scrollToSectionWithGap('content');" id="about">
+        ABOUT
+      </h5>
+    </header>
+    <div class="container">
+      <section class="menu">
+        <details>
+          <summary>Nethdima Educations</summary>
+          <ul>
+            <li>Sinhala</li>
+            <li>Sanskrit</li>
+            <li>Tamil</li>
+            <li>English</li>
+            <li>Mathematics</li>
+            <li>Science</li>
+            <li>History</li>
+            <li>Geography</li>
+            <li>Physical Education</li>
+            <li>Psychology</li>
+            <li>Web Development</li>
+            <li>Art</li>
+            <li
+              onclick="musicLessons(); scrollToSectionWithGap('music-lessons');"
+            >
+              Music
+            </li>
+            <li>Drama</li>
+            <li>Dancing</li>
+          </ul>
+        </details>
+
+        <details>
+          <summary>Nethdima Graphics</summary>
+          <ul>
+            <dl>
+              Photo Editing
+              <ul>
+                <li>Retouching</li>
+                <li>Color Correction</li>
+                <li>Photo Manipulation</li>
+                <li>Background Removal</li>
+                <li>Old Photo Repair</li>
+              </ul>
+            </dl>
+            <dl>
+              Text Typing
+              <ul>
+                <li>Document Formatting</li>
+                <li>Data Entry</li>
+                <li>Transcription Services</li>
+                <li>Copy Typing</li>
+              </ul>
+            </dl>
+            <dl>
+              Graphic Design
+              <ul>
+                <li>Logo Design</li>
+                <li>Business Cards</li>
+                <li>Flyers & Brochures</li>
+                <li>Poster Design</li>
+                <li>Bill Design</li>
+              </ul>
+            </dl>
+            <dl>
+              Web Development
+              <ul>
+                <li>Website Design</li>
+                <li>UI/UX Design</li>
+                <li>Responsive Web Development</li>
+                <li>E-commerce Solutions</li>
+                <li>Website Maintenance</li>
+              </ul>
+            </dl>
+            <dl>
+              Video Editing
+              <ul>
+                <li>Video Production</li>
+                <li>Post-Production Editing</li>
+                <li>Motion Graphics</li>
+                <li>Video Overlays</li>
+                <li>Promotional Videos</li>
+              </ul>
+            </dl>
+            <dl>
+              Print Design
+              <ul>
+                <li>Calendar Design</li>
+                <li>Book Cover Design</li>
+                <li>Book Layouts</li>
+                <li>Magazine Design</li>
+                <li>Event Invitations</li>
+              </ul>
+            </dl>
+            <dl>
+              Event Graphics
+              <ul>
+                <li>Party Invitations</li>
+                <li>Event Flyers</li>
+                <li>Event Branding</li>
+                <li>Social Media Event Graphics</li>
+              </ul>
+            </dl>
+          </ul>
+        </details>
+      </section>
+
+      <section class="music-lessons">
+        <h3>MUSIC LESSONS</h3>
+        <h5>Nethdima Educations</h5>
+        <details>
+          <summary><h3>සෞන්දර්ය විෂයන්ගේ මාධ්‍යන්</h3></summary>
           <p>
-            Now offering a diverse range of services, including radio and TV
-            broadcasting!
+            සෞන්දර්ය නිර්මාණ මඟින් විවිධ රස භාව ඇතිවන නිසා එම විෂය
+            ප්‍රේක්ෂකයන්ගේ රස වින්දනය සඳහාම යොදා ගැනෙන විෂයක් වන අතර සාහිත්‍යය,
+            චිත්‍ර කලාව, නර්තනය, නාට්‍ය, සංගීතය වැනි සෞන්දර්ය විෂයන් මඟින් කරනු
+            ලබන නිර්මාණ ප්‍රේක්ෂකයින් වෙත ගෙන යාමට විවිධ මාධ්‍ය යොදා ගනු ලැබේ.
+            පහත දැක්වෙන්නේ එක් එක් සෞන්දර්ය විෂයට අයත් මාධ්‍ය වේ.
+          </p>
+          <ul>
+            <li>
+              <strong>සාහිත්‍යය:</strong> සාහිත්‍යයේ දී කතා කිරීමට, හැඟීම් බෙදා
+              ගැනීමට සහ අදහස් ප්‍රකාශ කිරීමට වචන භාවිතා කරමු. ඒ අනුව අපට වචන
+              භාවිතා කිරීමට භාෂාව යන මාධ්‍ය අවශ්‍ය වේ.
+            </li>
+            <li>
+              <strong>චිත්‍ර කලාව:</strong> පින්තූරයක් ඇඳීමට සහ වර්ණ කිරීමට
+              රේඛා, හැඩතල සහ වර්ණ යන මාධ්‍ය අවශ්‍ය වේ.
+            </li>
+            <li>
+              <strong>නර්තනය:</strong> වචන නොමැතිව හැඟීම් සහ අදහස් ප්‍රකාශ
+              කිරීමට නර්තන ශිල්පීන් ඔවුන්ගේ අංග චලනයන් භාවිතා කරයි. ඒ අනුව අංග
+              චලනය යන මාධ්‍ය නර්තනය සඳහා අවශ්‍ය වේ.
+            </li>
+            <li>
+              <strong>නාට්‍ය:</strong> රංගන ශිල්පීන් විසින් තම ශරීරය සහ මුහුණ
+              භාවිතා කරමින් විවිධ චරිත නිරූපනය කිරීමට අභිනයන් යන මාධ්‍ය භාවිතා
+              කරයි. ඒ අනුව අභිනය යන මාධ්‍ය නාට්‍ය සඳහා අවශ්‍ය වේ.
+            </li>
+            <li>
+              <strong>සංගීතය:</strong> අපට සතුට, දුක, උද්යෝගිමත් හෝ සන්සුන් බවක්
+              දැනෙන ගීත නිර්මාණය කිරීමට නාද සහ ස්වර භාවිතා කරයි. ඒ අනුව සංගීතය
+              සඳහා අවශ්‍ය වන මාධ්‍ය වන්නේ නාද සහ ස්වරයි.
+            </li>
+          </ul>
+          <p>
+            සාහිත්‍යය සඳහා භාෂාවත්, චිත්‍ර සඳහා හැඩතල, රේඛා සහ වර්ණත්, නර්තනය
+            සඳහා අංග චලනයත්, නාට්‍ය සඳහා අභිනයත්, සංගීතය සඳහා නාද සහ ස්වරත්
+            සෞන්දර්ය විෂයන්ගේ මාධ්‍යන් වේ.
+          </p>
+        </details>
+
+        <details>
+          <summary><h3>සංගීතය යනු...?</h3></summary>
+          <p>
+            සංගීතය යනු විශ්ව භාෂාවක් වන අතර එය ප්‍රධාන වශයෙන් කොටස් දෙකකට බෙදෙනු
+            ලැබේ. ඒ අපරදිග ( බටහිර ) සංගීතය හා පෙරදිග ( භාරතීය ) සංගීතය නමින් ය.
+            අප රටේ බහුලව භාවිතා වන්නේ පෙරදිග සංගීත ක්‍රමය වන අතර එහි ප්‍රධාන රට
+            ඉන්දියාවයි. මෙම සංගීත ක්‍රමය රාග පදනම් කරගෙන ගොඩ නැඟී ඇති නිසා
+            රාගධාරී සංගීතය නමින් ද හදුන්වනු ලබන අතර එහි ප්‍රධාන ප්‍රභේද දෙකක්
+            ඇත. ඒ උතුරු ඉන්දීය හින්දුස්ථානී සංගීතය හා දකුණු ඉන්දීය කර්ණාටක
+            සංගීතය වශයෙනි. හින්දුස්ථානී සංගීත අධ්‍යාපනය 1934 වර්ෂයේ දී මහා කවි
+            රවීන්ද්‍රනාත් තාගෝර් තුමන්ගේ ලංකා ගමනයෙන් පසු හොරණ ශ්‍රීපාලි
+            විද්‍යායතනය මූලික කරගෙන මෙරට ආරම්භ වු අතර ශ්‍රී ලාංකිකයන් වැඩි
+            දුරටත් සංගීත අධ්‍යාපනය ලැබීමට ඉන්දියාවේ ශාන්ති නිකේතනය හෙවත්
+            විශ්වභාරතී විශ්ව විද්‍යාලයටත්, ලක්නව් හි පිහිටි භාත්ඛණ්ඩේ සංගීත
+            විද්‍යා පීඨයටත් ඇතුළත් වී පෙරදිග සංගීතය හදාරා මෙරටට පැමිණ
+            හිණ්දුස්ථානී රාගධාරී සංගීතය අප රටේ දූදරුවන්ට ඉගෙනීමට කටයුතු සලසා ඇත.
+          </p>
+        </details>
+
+        <details>
+          <summary><h3>ස්වර නාම හා සංකේත</h3></summary>
+          <p>
+            අපේ කනට ඇසෙන හඬ වර්ග දෙකකට වෙන් කල හැකිය. ඒ ශබ්ද සහ නාද වශයෙනි. ශබ්ද
+            යනු අපේ කනට ඇසෙන අපි අහන්න අකමැති අමිහිරි හඬ වන අතර නාද යනු අපේ කනට
+            ඇසෙන අපි අහන්න කැමති මිහිරි හඬ වේ. ගායනයට සහ වාදනයට යොදාගන්නේ මිහිරි
+            නාද පමණක් වන අතර එම නාද යොදාගනිමින් සංගීතයේ දී භාවිතා කරන ස්වර හත
+            සකසා ඇත. හින්දුස්ථානී සංගීතයේ දී මෙම ස්වර හත සප්ත ස්වර යනුවෙන් ද
+            හඳුන්වනු ලබයි.
+          </p>
+          <p>
+            සංගීතයේ දී භාවිතා කරන ස්වර හතේ එක් එක් ස්වරයට වෙන් වූ ස්වර නාමයක් සහ
+            ස්වර සංකේතයක් ඇති අතර පෙරදිග සංගීතයේ දී එම සංකේත සකසා ඇත්තේ ස්වර නාම
+            වල මුලකුරු පමණක් යොදා ගෙනය. පහත දැක්වෙන්නේ එක් එක් ස්වරයට අයත් ස්වර
+            නාමය සහ ස්වර සංකේතය වේ.
+          </p>
+          <table class="table1">
+            <tr>
+              <th colspan="3">පෙරදිග සංගීතය</th>
+              <th colspan="3">අපරදිග සංගීතය</th>
+            </tr>
+            <tr>
+              <td>ෂඩ්ජය</td>
+              <td>ස</td>
+              <td>Sa</td>
+              <td>Tonic</td>
+              <td>Do</td>
+              <td>C</td>
+            </tr>
+            <tr>
+              <td>සෘෂභය</td>
+              <td>රි</td>
+              <td>Re</td>
+              <td>Super Tonic</td>
+              <td>Re</td>
+              <td>D</td>
+            </tr>
+            <tr>
+              <td>ගාන්ධාරය</td>
+              <td>ග</td>
+              <td>Ga</td>
+              <td>Mediant</td>
+              <td>Mi</td>
+              <td>E</td>
+            </tr>
+            <tr>
+              <td>මධ්‍යමය</td>
+              <td>ම</td>
+              <td>Ma</td>
+              <td>Sub Dominant</td>
+              <td>Fa</td>
+              <td>F</td>
+            </tr>
+            <tr>
+              <td>පංචමය</td>
+              <td>ප</td>
+              <td>Pa</td>
+              <td>Dominant</td>
+              <td>So</td>
+              <td>G</td>
+            </tr>
+            <tr>
+              <td>ධෛවතය</td>
+              <td>ධ</td>
+              <td>Dha</td>
+              <td>Sub Mediant</td>
+              <td>La</td>
+              <td>A</td>
+            </tr>
+            <tr>
+              <td>නිශාදය</td>
+              <td>නි</td>
+              <td>Ni</td>
+              <td>Leading Tone</td>
+              <td>Ti</td>
+              <td>B</td>
+            </tr>
+          </table>
+          <h4>පෙරදිග සංගීතයේ ස්වර සහ සංකේත</h4>
+          <p>
+            පෙරදිග සංගීතයේ ස්වර නාම වනුයේ
+            <b>ෂඩ්ජය, සෘෂභය, ගාන්ධාරය, මධ්‍යමය, පංචමය, ධෛවතය, නිශාදය</b>
+            වන අතර <b>ස, රි, ග, ම, ප, ධ, නි</b> යනු එහි සංකේත වේ. එම සංකේත
+            ඉංග්‍රීසි අකුරු යොදාගෙන
+            <b>Sa, Re, Ga, Ma, Pa, Dha, Ni </b>
+            යනුවෙන් ලියනු ලැබේ.
+          </p>
+
+          <h4>අපරදිග සංගීතයේ ස්වර සහ සංකේත</h4>
+          <p>
+            අපරදිග සංගීතයේ ස්වර නාම වනුයේ
+            <b
+              >Tonic, Super Tonic, Mediant, Sub Dominant, Dominant, Sub Mediant,
+              Leading Tone
+            </b>
+            වන අතර <b>C D E F G A B </b> යනු එහි සංකේත වේ. අපරදිග සංගීතයේ ස්වර
+            නාම
+            <b>Do, Re, Mi, Fa, So, La, Ti </b>
+            යනුවෙන් ද හඳුන්වනු ලැබේ.
+          </p>
+        </details>
+
+        <details>
+          <summary><h3>ස්වර ප්‍රභේද</h3></summary>
+          <p>
+            සංගීතයේ ස්වර සියල්ල දොළහකි. ඒ
+            <b
+              >ස <span style="text-decoration: underline">රි</span> රි
+              <span style="text-decoration: underline">ග</span> ග ම ම’ ප
+              <span style="text-decoration: underline">ධ</span> ධ
+              <span style="text-decoration: underline">නි</span> නි</b
+            >
+            වශයෙනි.
+            <b>ස රි ග ම ප ධ නි</b> යන ස්වර හත ප්‍රකෘති ස්වර හෙවත් ශුද්ධ ස්වර
+            වශයෙන් හඳුන්වන අතර
+            <b
+              ><span style="text-decoration: underline">රි</span>
+              <span style="text-decoration: underline">ග</span> ම’
+              <span style="text-decoration: underline">ධ</span>
+              <span style="text-decoration: underline">නි</span>
+            </b>
+            යන ස්වර පහ විකෘති ස්වර හෙවත් චල ස්වර වශයෙන් හඳුන්වනු ලබයි. විකෘති
+            ස්වර ද කෝමල හා තීව්‍ර වශයෙන් කොටස් දෙකකට බෙදේ. ශුද්ධ ස්වරයක හඬ අඩක්
+            අඩු වූ විට එය කෝමල ස්වර ලෙස හඳුන්වන අතර ඒවා හඳුනා ගැනීමට ස්වරයට
+            යටින් ඉරක් අඳිනු ලැබේ. ශුද්ධ ස්වරයක හඬ අඩක් වැඩි වූ විට එය තීව්‍ර
+            ස්වර ලෙස හඳුන්වන අතර එම ස්වරය හඳුනාගැනීමට ස්වරයට දකුණු පස ඉහළින්
+            කුඩා ඇල ඉරක් අඳිනු ලැබේ. පෙරදිග සංගීතයේ රි ග ම ධ නි යන ස්වර පහ කෝමල
+            සහ තීව්‍ර වශයෙන් වෙනස් වූවත් කිසි විටක ස ස්වරය හා ප ස්වරය වෙනස්
+            නොවේ. ඒ අනුව මෙම ස්වර දෙක වෙනස් නොවන ස්වර හෙවත් අචල ස්වර නමින්
+            හඳුන්වනු ඇත.
+          </p>
+          <p>
+            ප්‍රකෘති ස්වර හෙවත් ශුද්ධ ස්වර අපරදිග සංගීතයේ දී
+            <span>Natural Notes</span> යනුවෙන් හඳුන්වන අතර එම ස්වර
+            <b>C D E F G A B </b> වේ.
+          </p>
+          <p>
+            විකෘති ස්වර පහ
+            <span>Sharp Notes ( ♯ ) </span> හා <span>Flat Notes ( ♭ ) </span> යන
+            දෙයාකාරයෙන්ම හඳුන්වනු ඇත.
+            <span>Sharp Notes <b> C♯ D♯ F♯ G♯ A♯ </b> වන අතර ඒවා </span>
+            හඳුනාගැනීමට ස්වරයට ඉදිරියෙන්
+            <span> ♯ </span> සළකුණත්
+            <span>Flat Notes</span>
+            <b> D♭ E♭ G♭ A♭ B♭ </b> වන අතර ඒවා හඳුනාගැනීමට ස්වරයට ඉදිරියෙන්
+            <span>♭</span> සළකුණත් යොදනු ඇත.
+          </p>
+        </details>
+
+        <details>
+          <summary><h3>ස්වර පුවරු වාද්‍ය භාණ්ඩ</h3></summary>
+          <p>
+            ස්වර පුවරු වාද්‍ය භාණ්ඩ යනු සංගීතමය නාද ඉපදවිය හැකි යතුරු ( keys )
+            පුවරුවක් සහිත සංගීත භාණ්ඩ වන අතර එම සංගීත භාණ්ඩ වනුයේ විදුලි ඕගනය,
+            පියානෝව, මෙලෝඩිකාව, එකෝඩියනය සහ සර්පිනාවයි.
+          </p>
+          <p>
+            ස්වර පුවරු වාද්‍ය භාණ්ඩ සියල්ල හැඩයෙන් සහ ප්‍රමාණයෙන් එකිනෙකට
+            වෙනස්වන අතර හඬ නිපදවීමේ ක්‍රම වලද වෙනස්කම් ඇත. මේවා හඬ නිපදවීමේ
+            ක්‍රම අනුව කොටස් තුනකට වෙන් කල හැකිය. ඒ සුසිර භාණ්ඩ, තත් භාණ්ඩ සහ
+            විද්‍යුත් භාණ්ඩ වසයෙනි.
+          </p>
+          <ul>
+            <li>
+              <strong>සුසිර භාණ්ඩ‍: </strong> සුළගේ ආධාරයෙන් හඬ නිපදවන භාණ්ඩ වේ.
+              <b>( මෙලෝඩිකාව, එකෝඩියනය, සර්පිනාව )</b>
+            </li>
+            <li>
+              <strong>තත් භාණ්ඩ:</strong> තත් කම්පනය වීමෙන් හඬ නිපදවන භාණ්ඩ වේ.
+              <b>( පියානෝව )</b>
+            </li>
+            <li>
+              <strong>විද්‍යුත් භාණ්ඩ:</strong> විදුලිය මගින් ක්‍රියාත්මක වන
+              භාණ්ඩ වේ. <b>( විදුලි ඕගනය )</b>
+            </li>
+          </ul>
+          <p>
+            ස්වර පුවරුවක ඇති සුදු පාට යතුරු සියල්ලෙහි ස්වර ප්‍රකෘති හෙවත් ශුද්ධ
+            ස්වර වන අතර කළු පාට යතුරු සියල්ලෙහි ස්වර විකෘති හෙවත් චල ස්වර වේ.
+          </p>
+        </details>
+
+        <details>
+          <summary><h3>තිවිධ සප්තකය</h3></summary>
+          <p>
+            ස්වර සප්තකය යනු ෂඩ්ජයේ ( ස ) සිට නිශාදය ( නි ) තෙක් ඇති ස්වර හත වේ.
+            ස්වර පුවරුවක හඬ දකුණු පැත්තට ගමන් කිරීමේ දී වැඩි වන අතර වම් පැත්තට
+            ගමන් කිරීමේ දී අඩු වේ. ඒ අනුව ප්‍රධාන වශයෙන් සප්තක තුනක් ඇත. එය
+            ත්‍රිවිධ සප්තකය ලෙස හඳුන්වයි.
+          </p>
+          <ul>
+            <li>
+              <strong>මධ්‍ය සප්තකය </strong> යනු අපි කතා කරන සාමාන්‍ය හඬට ගැලපෙන
+              ස්වර පිහිටි සප්තකය වේ. මෙම සප්තකයට අයත් ස්වර හඳුනාගැනීමට කිසිම
+              වෙනසක් නොකරන අතර <b>ස රි ග ම ප ධ නි</b> යනුවෙන් පමණක් ලියනු ඇත.
+            </li>
+            <li>
+              <strong>මන්ද්‍ර සප්තකය </strong>යනු මධ්‍ය සප්තකයට වඩා හඬ පහළින්
+              පිහිටන ස්වර ඇති සප්තකය වේ. මෙම සප්තකයට අයත් ස්වර හඳුනාගැනීමට
+              ස්වරයට පහළින් තිතක් තියන ලැබේ.
+            </li>
+            <li>
+              <strong>උච්ච සප්තකය </strong> යනු මධ්‍ය සප්තකයට වඩා හඬ ඉහළින්
+              පිහිටන ස්වර ඇති සප්තකය වේ. මෙම සප්තකයට අයත් ස්වර හඳුනාගැනීමට
+              ස්වරයට ඉහළින් තිතක් තියන ලැබේ.
+            </li>
+          </ul>
+          <video
+            class="video-1"
+            poster="nethdima-img/music-lessons-img/nethdima-keyboard-img-3sapthaka.gif"
+          ></video>
+          <p>
+            සෑම ස්වර පුවරු වාද්‍ය භාණ්ඩයකම සුදු පාටින් සහ කළු පාටින් යතුරු දැක
+            ගැනීමට හැකිය. එහි සුදු පාට යතුරු කිසිම වෙනසක් නැතුව එක දිගට පිහිටා
+            තිබුනත් කළු පාට යතුරු දිහා බැලු විට සුදු යතුරු තුනක කළු යතුරු දෙකක්
+            ද, සුදු යතුරු හතරක කළු යතුරු තුනක් ද වන සේ එක් රටාවකට පිහිටා ඇත. මෙම
+            රටාව හොදින් මතක තබා ගැනීමෙන් ස්වර පුවරුවක නිවැරදි ස්වර පිහිටි ස්ථාන
+            මතකයේ තබා ගැනිම එතරම් අමාරු නොවේ.
+          </p>
+          <p>
+            ස්වර පුවරුවක ස ස්වරය සෙවිමේදී මධ්‍ය සප්තකය සොයා ගත යුතුය. මධ්‍ය
+            සප්තකය සොයාගත් පසු එහි ඇති කළු පාටින් තියෙන යතුරු දෙක පිහිටා ඇති
+            සුදු යතුරු තුනේ පළවෙනි යතුර ස ස්වරය වේ. පහත දැක්වෙන ස්වර පුවරුව
+            හොදින් බලන්න. එහි නිවැරදිව ස්වර සටහන් කරන අයුරු පැහැදිලිව පෙන්වා ඇත.
+            ඒ අනුව තනිවම ස්වර පුවරුවක් ඇඳ ස්වර පුවරුවේ මධ්‍ය සප්තකයට අයත් ස්වර
+            සියල්ල සටහන් කරගෙන පසුව පහත ස්වර පුවරුවේ සටහන් කරන අයුරින් ඉහත ස්වර
+            පුවරුවේ සඳහන් පරිදි මන්ද්‍ර සප්තකය සහ උච්ච සප්තකය සටහන් කර ගන්න.
+          </p>
+          <video
+            class="video-1"
+            poster="nethdima-img/music-lessons-img/nethdima-keyboard-img-3sapthaka-swra.gif"
+          ></video>
+        </details>
+
+        <details>
+          <summary><h3>Semi Tone & Tone</h3></summary>
+          <p>
+            Semi Tone එකක් යනු ඕනෑම ස්වරයක සිට ඊට ආසන්නම ස්වරයට ඇති දුර වන අතර
+            Semi Tone දෙකක් එකතු වු විට Tone එකක් සෑදේ. ඒ අනුව Semi Tone එකක්
+            යනු Tone භාගයකි.
+          </p>
+          <p>
+            පහත දැක්වෙන ස්වර පුවරුව දෙස හොඳින් බලන්න. එහි ස ස්වරයේ සිට රි ස්වරයට
+            ඇති දුර Tone එකක් බව පැහැදිලිව සඳහන් කර ඇති අතර එම ස්වර පුවරුවේ
+            සියළුම ශුද්ධ ස්වර එකිනෙකට ඇති දුර සඳහන් කර ඇත. එය හොඳින් බලා තනිවම
+            ස්වර අතර ඇති දුර සොයා බලන්න.
+          </p>
+          <video
+            class="video-1"
+            poster="nethdima-img/music-lessons-img/nethdima-keyboard-img-semi-tone-tone.gif"
+          ></video>
+          <p>
+            පහත දැක්වෙන්නේ ස්වරයෙන් ස්වරයට ඇති දුර වන අතර එය හොදින් බලා වටහා
+            ගන්න.
+          </p>
+          <table class="table1">
+            <tr>
+              <th>Step</th>
+              <th>Notes</th>
+              <th>Interval</th>
+            </tr>
+            <tr>
+              <td>1 - 2</td>
+              <td>C - Db</td>
+              <td>(H) Half step</td>
+            </tr>
+            <tr>
+              <td>2 - 3</td>
+              <td>Db - D</td>
+              <td>(H) Half step</td>
+            </tr>
+            <tr>
+              <td>3 - 4</td>
+              <td>D - Eb</td>
+              <td>(H) Half step</td>
+            </tr>
+            <tr>
+              <td>4 - 5</td>
+              <td>Eb - E</td>
+              <td>(H) Half step</td>
+            </tr>
+            <tr>
+              <td>5 - 6</td>
+              <td>E - F</td>
+              <td>(H) Half step</td>
+            </tr>
+            <tr>
+              <td>6 - 7</td>
+              <td>F - F#</td>
+              <td>(H) Half step</td>
+            </tr>
+            <tr>
+              <td>7 - 8</td>
+              <td>F# - G</td>
+              <td>(H) Half step</td>
+            </tr>
+            <tr>
+              <td>8 - 9</td>
+              <td>G - Ab</td>
+              <td>(H) Half step</td>
+            </tr>
+            <tr>
+              <td>9 - 10</td>
+              <td>Ab - A</td>
+              <td>(H) Half step</td>
+            </tr>
+            <tr>
+              <td>10 - 11</td>
+              <td>A - Bb</td>
+              <td>(H) Half step</td>
+            </tr>
+            <tr>
+              <td>11 - 12</td>
+              <td>Bb - B</td>
+              <td>(H) Half step</td>
+            </tr>
+            <tr>
+              <td>12 - 13</td>
+              <td>B - C</td>
+              <td>(H) Half step</td>
+            </tr>
+            <tr>
+              <td>1 - 13</td>
+              <td>C - C</td>
+              <td>Octave</td>
+            </tr>
+          </table>
+          <p>
+            පහත දැක්වෙන්නේ ප්‍රකෘති ස්වර හෙවත් ශුද්ධ ස්වර අතර ඇති දුරය. එසේත්
+            නොමැතිනම් ස්වර පුවරුවල ඇති සුදු යතුරු අතර ඇති දුරය. හොදින් බලා එය
+            වටහා ගන්න.
+          </p>
+          <table class="table1">
+            <tr>
+              <th>Step</th>
+              <th>Notes</th>
+              <th>Interval</th>
+            </tr>
+            <tr>
+              <td>1 - 3</td>
+              <td>C - D</td>
+              <td>(W) Whole step</td>
+            </tr>
+            <tr>
+              <td>3 - 5</td>
+              <td>D - E</td>
+              <td>(W) Whole step</td>
+            </tr>
+            <tr>
+              <td>5 - 6</td>
+              <td>E - F</td>
+              <td>(H) Half step</td>
+            </tr>
+            <tr>
+              <td>6 - 8</td>
+              <td>F - G</td>
+              <td>(W) Whole step</td>
+            </tr>
+            <tr>
+              <td>8 - 10</td>
+              <td>G - A</td>
+              <td>(W) Whole step</td>
+            </tr>
+            <tr>
+              <td>10 - 12</td>
+              <td>A - B</td>
+              <td>(W) Whole step</td>
+            </tr>
+            <tr>
+              <td>12 - 13</td>
+              <td>B - C</td>
+              <td>(H) Half step</td>
+            </tr>
+            <tr>
+              <td>1 - 13</td>
+              <td>C - C</td>
+              <td>Octave</td>
+            </tr>
+          </table>
+          <p>
+            ඉහත Half step යනුවෙන් දක්වා ඇත්තේ Semi Tone වන අතර Whole step
+            යනුවෙන් දක්වා ඇත්තේ Tone වේ.
+          </p>
+        </details>
+
+        <details>
+          <summary><h3>Major Scale</h3></summary>
+          <p>
+            Scale එකක් යනු ස්වර සමුහයක එකතුවක් වන අතර එක් ස්වරයක සිට Semi Tone
+            12ක් දකුණු පැත්තට වන සේ එක එක රටාවට පිහිටන අයුරින් සකස් කිරීම Scale
+            ලෙස හැඳින්විය හැක. මේ අයුරින් එක එක රටාවට ස්වර පිහිටන Scale වර්ග
+            කිහිපයක් ඇත.
+          </p>
+          <p>
+            Major Scale වල පහසුවෙන් ගොඩනැගිය හැකි Scale එක C Major Scale එක වේ.
+            එය සංගීතයේ දී භාවිතා කරන ශුද්ධ ස්වර නොහොත් Natural Notes වන අතර එහි
+            Root Note එක C ස්වරය වේ. Root Note එක යනු සෑම Scale එකකම පළමු ස්වරය
+            වේ.
+          </p>
+
+          <p>
+            Scale එකක් ගොඩනැගිමේදි එහි ස්වර එක්තරා රටාවක් අනුව සැකසිය යුතුය.
+            Major Scale එකේ රටාව වනුයේ Tone, Tone, Semi Tone, Tone, Tone, Tone,
+            Semi Tone යනුවෙනි. මෙම රටාව කෙටියෙන් දැක්වීමේ T T S T T T S යනුවෙන්
+            ලියනු ඇත. පහත දී ඇති ස්වර පුවරුවේ C (ස) Major Scale එකට සම්බන්ධ රටාව
+            දී ඇති අතර එය හොදින් බලා Major Scale එකේ රටාව වටහා ගන්න.
+          </p>
+          <video
+            class="video-1"
+            poster="nethdima-img/music-lessons-img/nethdima-keyboard-img-tone-tone-semi-tone.gif"
+          ></video>
+          <p>
+            ඉහත සඳහන් රටාව පිළිබඳව තව දුරටත් සොයා බලමු.
+            <b
+              >ස ස්වරයේ සිට රි ස්වරයට ඇති දුර Tone එකයි. රි ස්වරයේ සිට ග ස්වරයට
+              ඇති දුර Tone එකයි. ග ස්වරයේ සිට ම ස්වරයට ඇති දුර Semi Tone එකයි. ම
+              ස්වරයේ සිට ප ස්වරයට ඇති දුර Tone එකයි. ප ස්වරයේ සිට ධ ස්වරයට ඇති
+              දුර Tone එකයි. ධ ස්වරයේ සිට නි ස්වරයට ඇති දුර Tone එකයි. නි ස්වරයේ
+              සිට උච්ච සප්තකයේ ස ස්වරය දක්වා ඇති දුර Semi Tone එකයි.</b
+            >
+            ඕනෑම Major Scale එකක් ගොඩනගා ගැනීමට මෙම රටාව බාවිතා කල යුතුය. Tone,
+            Tone, Semi Tone, Tone, Tone, Tone, Semi Tone.
+          </p>
+          <p>
+            දැන් ඉහත රටාව බාවිතා කර C (ස) Major Scale එක ගොඩනගමු. පළමුවෙන් C (ස)
+            Major Scale එකේ Root Note එක C (ස) ස්වරය ලියා ගන්න. ඉන්පසු C (ස)
+            ස්වරයේ සිට Tone එකක් දුර තිබෙන D (රි) ස්වරය ලියා ගන්න. D (රි) ස්වරයේ
+            සිට Tone එකක් දුර තිබෙන E (ග) ස්වරය ලියා ගන්න. E (ග) ස්වරයේ සිට Semi
+            Tone එකක් දුර ඇති F (ම) ස්වරය ලියා ගන්න. F (ම) ස්වරයේ සිට Tone එකක්
+            දුර තිබෙන G (ප) ස්වරය ලියා ගන්න. G (ප) ස්වරයේ සිට Tone එකක් දුර
+            තිබෙන A (ධ) ස්වරය ලියා ගන්න. A (ධ) ස්වරයේ සිට Tone එකක් දුර තිබෙන B
+            (නි) ස්වරය ලියා ගන්න. B (නි) ස්වරයේ සිට Semi Tone එකක් දුර තිබෙන
+            උච්ච සප්තකයේ C (ස) ස්වරය ලියා ගන්න. දැන් ඔබට C (ස) Major Scale එකට
+            අදාළ ස්වර සියල්ල ලැබි ඇත.
+          </p>
+          <table class="table1">
+            <tr>
+              <td>C</td>
+              <td>D</td>
+              <td>E</td>
+              <td>F</td>
+              <td>G</td>
+              <td>A</td>
+              <td>B</td>
+              <td>C</td>
+            </tr>
+            <tr>
+              <td>ස</td>
+              <td>රි</td>
+              <td>ග</td>
+              <td>ම</td>
+              <td>ප</td>
+              <td>ධ</td>
+              <td>නි</td>
+              <td>ස</td>
+            </tr>
+          </table>
+          <p>
+            පහත දී ඇති ස්වර පුවරුවේ D (රි) Major Scale එකට සම්බන්ධ රටාව දී ඇති
+            අතර එය හොදින් බලා වටහා ගෙන ඉහත සඳහන් අයරින් D (රි) Major Scale එක
+            තනිවම සෑදිමට පුරුදු වන්න.
+          </p>
+          <video
+            class="video-1"
+            poster="nethdima-img/music-lessons-img/nethdima-keyboard-img-tone-tone-semi-tone-2.gif"
+          ></video>
+          <p>
+            මෙම ක්‍රමයට වඩා ලේසි අංක ක්‍රමයක් භාවිතා කර C (ස) Major Scale එක
+            නිවැරදිව නිර්මාණය කරමු.
+            <b
+              >ස ස්වරයේ සිට නි ස්වරය තෙක් ඇති ස්වර 12 නිවැරදිව ලියා ගෙන පහත දී
+              ඇති ස්වර පුවරුවේ සඳහන් අයුරින් අංක යොදාගෙන C (ස) Major Scale එක
+              නිර්මාණය කර ගන්න. ඉන් පසු මෙම ක්‍රමය භාවිතා කර ඉතුරු Major Scale
+              ටිකත් නිර්මාණය කිරීමට පුරුදු වන්න.
+            </b>
+          </p>
+          <video
+            class="video-1"
+            poster="nethdima-img/music-lessons-img/nethdima-keyboard-img-tone-tone-semi-tone-3.gif"
+          ></video>
+          <table class="table1">
+            <tr>
+              <td>1 - 3</td>
+              <td>C - D</td>
+              <td>(T) Tone</td>
+            </tr>
+            <tr>
+              <td>3 - 5</td>
+              <td>D - E</td>
+              <td>(T) Tone</td>
+            </tr>
+            <tr>
+              <td>5 - 6</td>
+              <td>E - F</td>
+              <td>(S) Semi Tone</td>
+            </tr>
+            <tr>
+              <td>6 - 8</td>
+              <td>F - G</td>
+              <td>(T) Tone</td>
+            </tr>
+            <tr>
+              <td>8 - 10</td>
+              <td>G - A</td>
+              <td>(T) Tone</td>
+            </tr>
+            <tr>
+              <td>10 - 12</td>
+              <td>A - B</td>
+              <td>(T) Tone</td>
+            </tr>
+            <tr>
+              <td>12 - 13</td>
+              <td>B - C</td>
+              <td>(S) Semi Tone</td>
+            </tr>
+          </table>
+        </details>
+
+        <details>
+          <summary><h3>Minor Scale</h3></summary>
+          <p>
+            ප්‍රධාන වශයෙන් Minor Scale තුනක් ඇත. ඒ Natural Minor Scale, Harmonic
+            Minor Scale සහ Melodic Minor Scale වශයෙනි. Minor Scale වලටත් Major
+            Scale වලට මෙන් රටාවක් තියෙනවා. එම රටාව තමයි Tone, Semi Tone, Tone,
+            Tone, Semi Tone, Tone, Tone යනුවෙනි. මෙම රටාව කෙටියෙන් දැක්වීමේ T S
+            T T S T T යනුවෙන් ලියනු ඇත. මෙය Natural Minor Scale එකේ රටාවයි. පහත
+            දී ඇති ස්වර පුවරුවේ C (ස) Natural Minor Scale එකට සම්බන්ධ රටාව දී
+            ඇති අතර එය හොදින් බලා Natural Minor Scale එකේ රටාව වටහා ගන්න.
+          </p>
+          <video
+            class="video-1"
+            poster="nethdima-img/music-lessons-img/nethdima-keyboard-img-tone-semi-tone.gif"
+          ></video>
+          <p>
+            ඉහත සඳහන් රටාව පිළිබඳව තව දුරටත් සොයා බලමු.
+            <b
+              >ස ස්වරයේ සිට රි ස්වරයට ඇති දුර Tone එකයි. රි ස්වරයේ සිට කෝමල ග
+              ස්වරයට ඇති දුර Semi Tone එකයි. කෝමල ග ස්වරයේ සිට ම ස්වරයට ඇති දුර
+              Tone එකයි. ම ස්වරයේ සිට ප ස්වරයට ඇති දුර Tone එකයි. ප ස්වරයේ සිට
+              කෝමල ධ ස්වරයට ඇති දුර Semi Tone එකයි. කෝමල ධ ස්වරයේ සිට කෝමල නි
+              ස්වරයට ඇති දුර Tone එකයි. කෝමල නි ස්වරයේ සිට උච්ච ස ස්වරයට ඇති දුර
+              Tone එකයි.</b
+            >
+            ඕනෑම Natural Minor Scale එකක් ගොඩනගා ගැනීමට මෙම රටාව බාවිතා කල
+            යුතුය. Tone, Semi Tone, Tone, Tone, Semi Tone, Tone, Tone.
+          </p>
+          <p>
+            දැන් ඉහත රටාව බාවිතා කර C Natural Minor Scale එක ගොඩනගමු. පළමුවෙන් C
+            Natural Minor Scale එකේ Root Note එක ස ස්වරය ලියා ගන්න. ඉන්පසු ස
+            ස්වරයේ සිට Tone එකක් දුර තිබෙන රි ස්වරය ලියා ගන්න. රි ස්වරයේ සිට
+            Semi Tone එකක් දුර ඇති කෝමල ග ස්වරය ලියා ගන්න. කෝමල ග ස්වරයේ සිට
+            Tone එකක් දුර තිබෙන ම ස්වරය ලියා ගන්න. ම ස්වරයේ සිට Tone එකක් දුර
+            තිබෙන ප ස්වරය ලියා ගන්න. ප ස්වරයේ සිට Semi Tone එකක් දුර ඇති කෝමල ධ
+            ස්වරය ලියා ගන්න. කෝමල ධ ස්වරයේ සිට Tone එකක් දුර ඇති කෝමල නි ස්වරය
+            ලියා ගන්න. කෝමල නි ස්වරයේ සිට Tone එකක් දුර තිබෙන උච්ච සප්තකයේ ස
+            ස්වරය ලියා ගන්න. දැන් ඔබට C Natural Minor Scale එකට අදාළ ස්වර සියල්ල
+            ලැබි ඇත.
+          </p>
+          <table class="table1">
+            <tr>
+              <td>ස</td>
+              <td>රි</td>
+              <td><span style="text-decoration: underline">ග</span></td>
+              <td>ම</td>
+              <td>ප</td>
+              <td><span style="text-decoration: underline">ධ</span></td>
+              <td><span style="text-decoration: underline">නි</span></td>
+              <td>ස</td>
+            </tr>
+          </table>
+          <p>
+            පහත දී ඇති ස්වර පුවරුවේ D Natural Minor Scale එකට සම්බන්ධ රටාව දී
+            ඇති අතර එය හොදින් බලා වටහා ගෙන ඉහත සඳහන් අයරින් D Natural Minor
+            Scale එක තනිවම සෑදිමට පුරුදු වන්න.
+          </p>
+          <video
+            class="video-1"
+            poster="nethdima-img/music-lessons-img/nethdima-keyboard-img-tone-semi-tone2.gif"
+          ></video>
+          <p>
+            පහත දී ඇති ස්වර පුවරුවේ C Natural Minor Scale එක හා එහි අංක ලබා දී
+            ඇති අතර එය හොදින් බලා වටහා ගෙන Natural Minor Scale තනිවම සෑදිමට
+            පුරුදු වන්න.
+          </p>
+          <video
+            class="video-1"
+            poster="nethdima-img/music-lessons-img/nethdima-keyboard-img-tone-semi-tone3.gif"
+          ></video>
+          <table class="table1">
+            <tr>
+              <td>1 - 3</td>
+              <td>C - D</td>
+              <td>(T) Tone</td>
+            </tr>
+            <tr>
+              <td>3 - 4</td>
+              <td>D - Eb</td>
+              <td>(S) Semi Tone</td>
+            </tr>
+            <tr>
+              <td>4 - 6</td>
+              <td>Eb - F</td>
+              <td>(T) Tone</td>
+            </tr>
+            <tr>
+              <td>6 - 8</td>
+              <td>F - G</td>
+              <td>(T) Tone</td>
+            </tr>
+            <tr>
+              <td>8 - 9</td>
+              <td>G - Ab</td>
+              <td>(S) Semi Tone</td>
+            </tr>
+            <tr>
+              <td>9 - 11</td>
+              <td>Ab - Bb</td>
+              <td>(T) Tone</td>
+            </tr>
+            <tr>
+              <td>11 - 13</td>
+              <td>Bb - C</td>
+              <td>(T) Tone</td>
+            </tr>
+          </table>
+          <p>
+            Harmonic Minor Scale එක නිර්මාණය සඳහා Natural Minor Scale එකේ හත්
+            වෙනි ස්වරයට Semi Tone එකක් එකතු කළ පසු Harmonic Minor Scale එක
+            නිර්මාණය වේ. පහත දී ඇති ස්වර පුවරුවේ C Harmonic Minor Scale එක හා
+            එහි අංක ලබා දී ඇති අතර එය හොදින් බලා වටහා ගෙන Harmonic Minor Scale
+            තනිවම සෑදිමට පුරුදු වන්න.
+          </p>
+          <video
+            class="video-1"
+            poster="nethdima-img/music-lessons-img/nethdima-keyboard-img-tone-semi-tone4.gif"
+          ></video>
+          <p>
+            Melodic Minor Scale එක නිර්මාණය සඳහා Natural Minor Scale එකේ හය වෙනි
+            ස්වරයට Semi Tone එකක් එකතු කිරීම සහ හත් වෙනි ස්වරයට Semi Tone එකක්
+            එකතු කිරීමෙන් පසු Melodic Minor Scale එක නිර්මාණය වේ. පහත දී ඇති
+            ස්වර පුවරුවේ C Melodic Minor Scale එක හා එහි අංක ලබා දී ඇති අතර එය
+            හොදින් බලා වටහා ගෙන Melodic Minor Scale තනිවම සෑදිමට පුරුදු වන්න.
+          </p>
+          <video
+            class="video-1"
+            poster="nethdima-img/music-lessons-img/nethdima-keyboard-img-tone-semi-tone5.gif"
+          ></video>
+        </details>
+
+        <details>
+          <summary><h3>Relative Scale</h3></summary>
+          <p>
+            යම්කිසි Scale එකක තිබෙන ස්වර වෙනම රටාවකට වෙනත් Scale එකක තිබේ නම්
+            ඒවා Relative Scale යනුවෙන් හඳුන්වනු ඇත. පහත දැක්වෙන්නේ Relative
+            Major & Minor Scale එකකි. එහි තිබෙන ස්වර එකම ස්වර වන අතර රටාව පමණක්
+            වෙනස් වී ඇත.
+          </p>
+          <table class="table1">
+            <tr>
+              <td>C Major</td>
+              <td>C</td>
+              <td>D</td>
+              <td>E</td>
+              <td>F</td>
+              <td>G</td>
+              <td>A</td>
+              <td>B</td>
+            </tr>
+            <tr>
+              <td>A Minor</td>
+              <td>A</td>
+              <td>B</td>
+              <td>C</td>
+              <td>D</td>
+              <td>E</td>
+              <td>F</td>
+              <td>G</td>
+            </tr>
+          </table>
+          <p>
+            <b>Relative Scale සොයා ගන්නේ කෙසේද...? </b>ඕනෑම Major Scale එකක Root
+            Note එකේ සිට Semi Tone තුනක් පිටුපසින් ඇති ස්වරය Relative Natural
+            Minor Scale එකේ Root Note එක වන අතර ඕනෑම Natural Minor Scale එකක
+            Root Note එකේ සිට Semi Tone තුනක් ඉදිරියෙන් ඇති ස්වරය Relative Major
+            Scale එකේ Root Note එක වේ.
+          </p>
+        </details>
+      </section>
+
+      <section class="tv">
+        <div class="player">
+          <h3>NETHDIMA TV</h3>
+          <h5>Watch our Live TV Channel</h5>
+          <video-js
+            id="tv-player"
+            class="video-js vjs-default-skin"
+            controls
+            preload="auto"
+            poster="https://th.bing.com/th/id/R.1fcbce96641c4ef6b679996ed229ffd7?rik=Kuz%2fxrJd614feQ&pid=ImgRaw&r=0"
+          >
+            <source
+              src="https://nethdima.lk/nethdima-tv-stream.m3u8"
+              type="application/x-mpegURL"
+            /> </video-js
+          ><marquee behavior="scroll" direction="left" scrollamount="3">
+            <p style="font-size: 12px">
+              Dear Valued Viewers, We regret to inform you that Nethdima TV
+              channel is currently experiencing temporary suspension due to
+              financial difficulties. We apologize for any inconvenience this
+              may cause and assure you that we are actively working to resolve
+              the situation as swiftly as possible. During this period, we
+              understand the impact it may have on your viewing experience, and
+              we sincerely apologize for any disruption. We assure you that our
+              team is diligently working to address the financial challenges and
+              bring Nethdima TV back to air at the earliest opportunity. We
+              appreciate your understanding and patience during this time.
+              Please stay tuned to our official communication channels for
+              updates on the situation and any developments regarding the
+              resumption of our broadcasting services. Once again, we apologize
+              for any inconvenience caused and thank you for your continued
+              support. [ Team of Nethdima Channel ]
+            </p>
+          </marquee>
+
+          <p>
+            Welcome to Nethdima TV, Your ultimate destination for captivating
+            television content, proudly brought to you by Nethdima Private
+            Limited. Since our inception, we've been committed to delivering an
+            unparalleled viewing experience.
+          </p>
+          <p>
+            Encountering any issues while watching Nethdima TV? Fear not! Our
+            dedicated team is here to assist you. Simply reach out to us on
+            WhatsApp at 0741688487, and we'll swiftly resolve any technical
+            difficulties you may encounter.
+          </p>
+          <p>
+            At Nethdima TV, inclusivity and professionalism are at the heart of
+            everything we do. Our programming is carefully curated to cater to
+            diverse audiences, ensuring a wholesome viewing experience free from
+            controversy or offensive content.
+          </p>
+          <p>
+            Thank you for being a part of the Nethdima TV family. Your continued
+            support drives us to new heights. Stay tuned for more enriching
+            content, and remember, we're just a message away on WhatsApp at
+            0741688487 for any assistance or feedback you may require.
           </p>
         </div>
+      </section>
 
-        <div class="offline-message" id="offlineMessage">
-          You are currently offline. <br />
-          Please check your internet connection.
+      <section class="fm">
+        <div class="player">
+          <h3>NETHDIMA FM</h3>
+          <h5>Listen to our Live radio channel</h5>
+          <video-js
+            id="fm-player"
+            class="video-js vjs-default-skin"
+            controls
+            preload="auto"
+            poster="https://th.bing.com/th/id/OIP.yS1Vw32_OJob6WxlGok6BQHaEK?rs=1&pid=ImgDetMain"
+          >
+            <source
+              src="https://stream.zeno.fm/eownpnzhffvtv"
+              type="video/mp4"
+            />
+          </video-js>
+          <p>
+            Welcome to Nethdima FM, your premier online destination for music,
+            news, and entertainment, brought to you by Nethdima Private Limited.
+            Since our launch on 21.12.2023, we have been committed to providing
+            a seamless broadcasting experience.
+          </p>
+          <p>
+            If you ever encounter any broadcast problems on Nethdima FM, we are
+            here to help. Simply reach out to us on our WhatsApp number -
+            0741688487. Our team will be glad to assist you and address any
+            issues you may have.
+          </p>
+          <p>
+            At Nethdima FM, we pride ourselves on maintaining a professional and
+            inclusive environment. We strive to create content that is enjoyable
+            for all our listeners, free from any controversial topics or
+            offensive language. Our goal is to provide a positive and uplifting
+            experience for everyone.
+          </p>
+          <p>
+            Thank you for staying with us and being a part of the Nethdima FM
+            community. We appreciate your continued support and look forward to
+            bringing you more exciting content in the future. Remember, if you
+            ever need assistance or have any feedback, don't hesitate to contact
+            us on WhatsApp at 0741688487.
+          </p>
         </div>
-        <div class="player-radio-container">
-          <div class="loading-indicator" id="loadingIndicator1">
-            <div class="loading-bar"></div>
-          </div>
-          <video
-            poster="https://th.bing.com/th/id/OIP.PAZaTTgdE1enB-hh2TPKxwHaEL?rs=1&pid=ImgDetMain"
-            src="https://stream.zeno.fm/eownpnzhffvtv"
-            id="audio1"
-          ></video>
-          <div class="loading-indicator" id="loadingIndicator2">
-            <div class="loading-bar"></div>
-          </div>
-          <button class="play-button" onclick="togglePlayPause('audio1')">
-            <i class="fas fa-play"></i>
-            <span class="play-text">Play</span>
-          </button>
+      </section>
+
+      <section class="content">
+        <h3>ABOUT US</h3>
+        <h5 style="margin-bottom: 5px">Nethdima Private Limited</h5>
+        <p>
+          Nethdima Private Limited, founded by Dinush Mangala on December 21,
+          2023, in the historic city of Anuradhapura, North Central Province of
+          Sri Lanka, marks a significant milestone in the realm of broadcasting
+          and entertainment. Our journey commenced with the launch of an online
+          TV channel and a radio channel, laying the foundation for our
+          commitment to excellence.
+        </p>
+        <p>
+          Nethdima Private Limited, founded on December 21, 2023, in
+          Anuradhapura, Sri Lanka, by Dinush Mangala, is dedicated to excellence
+          in broadcasting and entertainment. We are committed to delivering
+          top-notch services to our audience.
+        </p>
+        <p>
+          At Nethdima Private Limited, our mission is to provide high-quality
+          content and services that enrich the lives of our customers. Through
+          innovation and creativity, led by our founder Dinush Mangala, we
+          strive to set new standards in the media industry.
+        </p>
+        <p>
+          Thank you for your interest in Nethdima Private Limited. We look
+          forward to continuing to serve you with excellence, offering a wide
+          range of channels including Nethdima TV, Nethdima FM, and much more.
+        </p>
+        <div style="text-align: center">
+          <h6>
+            Copyright © 2023 - <span id="currentYear"></span> Nethdima. All
+            rights reserved.
+          </h6>
+          <h5>Nethdima Private Limited, RajaRata, Sri Lanka</h5>
         </div>
-      </div>
+        <script>
+          document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+        </script>
+      </section>
     </div>
 
     <script>
-      var currentVideo = null;
-      var loadingIndicatorElements = document.querySelectorAll(
-        "#loadingIndicator1, #loadingIndicator2"
-      );
-      var offlineMessageElement = document.getElementById("offlineMessage");
-
-      function togglePlayPause(videoId) {
-        var video = document.getElementById(videoId);
-        var playPauseBtn = video.parentElement.querySelector(".play-button");
-
-        if (currentVideo !== video) {
-          if (currentVideo) {
-            currentVideo.pause();
-            currentVideo.currentTime = 0;
-            currentVideo.parentElement.querySelector(".play-button").innerHTML =
-              '<i class="fas fa-play"></i><span class="play-text">Play</span>';
-            currentVideo.classList.remove("playing");
-          }
-          currentVideo = video;
-        }
-
-        if (video.paused) {
-          if (navigator.onLine) {
-            video.load();
-            video
-              .play()
-              .then(function () {
-                playPauseBtn.innerHTML =
-                  '<i class="fas fa-pause"></i><span class="play-text">Pause</span>';
-                video.parentElement.classList.add("playing");
-                video.classList.add("playing");
-              })
-              .catch(function (error) {
-                console.error("Failed to start playback:", error);
-              });
-          } else {
-            console.error("Cannot play video while offline.");
-          }
-        } else {
-          video.pause();
-          playPauseBtn.innerHTML =
-            '<i class="fas fa-play"></i><span class="play-text">Play</span>';
-          video.parentElement.classList.remove("playing");
-          video.classList.remove("playing");
-          video.poster =
-            "https://www.gifcen.com/wp-content/uploads/2022/04/wallpaper-gif-4.gif";
-        }
-
-        video.addEventListener("waiting", function () {
-          loadingIndicatorElements.forEach(function (element) {
-            element.style.display = "block";
-          });
-          playPauseBtn.innerHTML = '<span class="play-text">Loading...</span>';
-          video.poster =
-            "https://media.tenor.com/VTUWJ8XiBTIAAAAd/radio-panda.gif";
-          playPauseBtn.style.borderColor = "yellowgreen";
-          currentVideo.style.borderColor = "yellowgreen";
+      document.addEventListener("DOMContentLoaded", function () {
+        var tvPlayer = videojs("tv-player", {
+          controlBar: {
+            volumePanel: false,
+          },
         });
 
-        video.addEventListener("playing", function () {
-          loadingIndicatorElements.forEach(function (element) {
-            element.style.display = "none";
-            playPauseBtn.innerHTML =
-              '<i class="fas fa-pause"></i><span class="play-text">Pause</span>';
-            video.poster =
-              "https://www.gifcen.com/wp-content/uploads/2022/04/wallpaper-gif-4.gif";
-            playPauseBtn.style.borderColor = "green";
-            currentVideo.style.borderColor = "green";
-          });
-        });
-
-        video.addEventListener("pause", function () {
-          loadingIndicatorElements.forEach(function (element) {
-            element.style.display = "none";
-            playPauseBtn.innerHTML =
-              '<i class="fas fa-play"></i><span class="play-text">Play</span>';
-            video.poster =
-              "https://th.bing.com/th/id/OIP.yS1Vw32_OJob6WxlGok6BQHaEK?rs=1&pid=ImgDetMain";
-            playPauseBtn.style.borderColor = "red";
-            currentVideo.style.borderColor = "red";
-          });
-        });
-
-        video.addEventListener("error", function () {
-          handleVideoError(video);
-        });
-      }
-
-      function togglePlayButtons() {
-        var online = navigator.onLine;
-        var playButtons = document.querySelectorAll(
-          ".play-button, video, marquee"
-        );
-
-        playButtons.forEach(function (button) {
-          button.style.display = online ? "inline-block" : "none";
-          if (online) {
-            button.addEventListener("click", function () {
-              var videoId = this.dataset.videoId;
-              togglePlayPause(videoId);
-            });
-          } else {
-            button.removeEventListener("click", togglePlayPause);
-          }
-        });
-
-        offlineMessageElement.style.display = online ? "none" : "block";
-      }
-
-      function handleVideoError(video) {
-        console.error("Video error occurred:", video.error);
-      }
-
-      function removeOfflineMessage() {
-        offlineMessageElement.style.display = "none";
-      }
-
-      function showOfflineMessage() {
-        offlineMessageElement.style.display = "block";
-      }
-
-      window.addEventListener("online", function () {
-        togglePlayButtons();
-        removeOfflineMessage();
+        tvPlayer.muted(true);
+        tvPlayer.volume(0);
       });
-
-      window.addEventListener("offline", function () {
-        togglePlayButtons();
-        showOfflineMessage();
-        if (currentVideo) {
-          currentVideo.pause();
-        }
-      });
-
-      if (!navigator.onLine) {
-        showOfflineMessage();
-      }
-
-      togglePlayButtons();
     </script>
 
-    <marquee behavior="scroll" direction="left" scrollamount="5">
-      <span style="font-weight: bold">Dear Valued Viewers,</span>
-      <span
-        >We regret to inform you that Nethdima's three TV channels are currently
-        experiencing temporary suspension due to financial difficulties. We
-        apologize for any inconvenience this may cause and assure you that we
-        are actively working to resolve the situation as swiftly as possible.
-        During this period, we understand the impact it may have on your viewing
-        experience, and we sincerely apologize for any disruption. We assure you
-        that our team is diligently working to address the financial challenges
-        and bring Nethdima's three TV channels back to air at the earliest
-        opportunity. We appreciate your understanding and patience during this
-        time. Please stay tuned to our official communication channels for
-        updates on the situation and any developments regarding the resumption
-        of our broadcasting services. Once again, we apologize for any
-        inconvenience caused and thank you for your continued support. (
-        Nethdima TV, Nethdima Kids TV, Sadaham Nethdima TV )
-        <span style="color: silver"> --- Team of Nethdima --- </span></span
-      >
-    </marquee>
-    <table>
-      <td
-        style="
-          padding-bottom: 8px;
-          padding-right: 5px;
-          border-radius: 10px;
-          font-weight: bold;
-        "
-      >
-        Visitor :
-      </td>
-      <td class="notclicklink">
-        <script
-          type="text/javascript"
-          src="https://www.freevisitorcounters.com/en/home/counter/1144493/t/5"
-        ></script>
-      </td>
-    </table>
-    <p
-      style="
-        text-align: center;
-        font-weight: bold;
-        font-size: 12px;
-        margin-bottom: 0;
-      "
-    >
-      Copyright © 2023 - <span id="currentYear"></span> NETHDIMA. <br />
-      All rights reserved.
-    </p>
     <script>
-      document.getElementById("currentYear").textContent =
-        new Date().getFullYear();
+      document.addEventListener("DOMContentLoaded", function () {
+        var player = videojs("tv-player");
+        var sources = [
+          {
+            src: "https://nethdima.lk/nethdima-tv-stream.m3u8",
+            type: "application/x-mpegURL",
+          },
+          { src: "https://stream.zeno.fm/eownpnzhffvtv", type: "video/mp4" },
+        ];
+        var currentSourceIndex = 0;
+
+        function setSource(index) {
+          if (index < sources.length) {
+            player.src(sources[index]);
+            player.load();
+            // Autoplay removed here
+          } else {
+            console.log("All sources failed.");
+          }
+        }
+
+        player.on("error", function () {
+          currentSourceIndex++;
+          setSource(currentSourceIndex);
+        });
+
+        player.ready(function () {
+          setSource(currentSourceIndex);
+        });
+      });
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var tvPlayer = videojs("tv-player");
+        var fmPlayer = videojs("fm-player");
+
+        function pauseAllExcept(player) {
+          if (player !== tvPlayer) {
+            tvPlayer.pause();
+          }
+          if (player !== fmPlayer) {
+            fmPlayer.pause();
+          }
+        }
+
+        var tvVideo = document.querySelector("#tv-player video");
+        var fmVideo = document.querySelector("#fm-player video");
+
+        tvVideo.addEventListener("waiting", function () {
+          tvVideo.poster =
+            "https://th.bing.com/th/id/R.1fcbce96641c4ef6b679996ed229ffd7?rik=Kuz%2fxrJd614feQ&pid=ImgRaw&r=0";
+        });
+
+        tvVideo.addEventListener("playing", function () {
+          tvVideo.poster =
+            "https://th.bing.com/th/id/R.16248e2de3d42157bbe0ca61b4f45075?rik=5w2JeGgJVHBERg&pid=ImgRaw&r=0";
+        });
+
+        tvVideo.addEventListener("pause", function () {
+          tvVideo.poster =
+            "https://th.bing.com/th/id/OIP.JfWzcSJNPKmgHRYkNNPmiAHaEK?rs=1&pid=ImgDetMain";
+        });
+
+        fmVideo.addEventListener("waiting", function () {
+          fmVideo.poster =
+            "https://media.tenor.com/VTUWJ8XiBTIAAAAd/radio-panda.gif";
+        });
+
+        fmVideo.addEventListener("playing", function () {
+          fmVideo.poster =
+            "https://www.gifcen.com/wp-content/uploads/2022/04/wallpaper-gif-4.gif";
+        });
+
+        fmVideo.addEventListener("pause", function () {
+          fmVideo.poster =
+            "https://th.bing.com/th/id/OIP.yS1Vw32_OJob6WxlGok6BQHaEK?rs=1&pid=ImgDetMain";
+        });
+
+        tvPlayer.on("play", function () {
+          pauseAllExcept(tvPlayer);
+        });
+
+        fmPlayer.on("play", function () {
+          pauseAllExcept(fmPlayer);
+        });
+
+        var bigPlayButtons = document.querySelectorAll(".vjs-big-play-button");
+        bigPlayButtons.forEach(function (button) {
+          button.style.left = "50%";
+          button.style.top = "50%";
+          button.style.transform = "translate(-50%, -50%)";
+        });
+      });
+    </script>
+
+    <script>
+      const detailsElements = document.querySelectorAll("details");
+
+      detailsElements.forEach((details) => {
+        details.addEventListener("click", () => {
+          detailsElements.forEach((detailsToClose) => {
+            if (detailsToClose !== details) {
+              detailsToClose.removeAttribute("open");
+            }
+          });
+        });
+      });
+    </script>
+
+    <script>
+      function hideAllSections() {
+        const sections = document.querySelectorAll(
+          ".content, .menu, .music-lessons"
+        );
+        sections.forEach((section) => {
+          section.style.display = "none";
+        });
+      }
+
+      function openNav() {
+        hideAllSections();
+        document.querySelector(".menu").style.display = "block";
+        document.querySelector("#home").style.display = "block";
+        document.querySelector("#menu").style.display = "none";
+      }
+
+      function backHome() {
+        hideAllSections();
+        document.querySelector(".content").style.display = "block";
+        document.querySelector("#menu").style.display = "block";
+        document.querySelector("#home").style.display = "none";
+      }
+
+      function musicLessons() {
+        hideAllSections();
+        document.querySelector(".music-lessons").style.display = "block";
+        document.querySelector("#home").style.display = "block";
+        document.querySelector("#menu").style.display = "block";
+      }
+    </script>
+
+    <script>
+      function toggleDarkMode() {
+        const body = document.body;
+        body.classList.toggle("dark-mode");
+        const darkLightText = document.getElementById("dark-light-text");
+        if (body.classList.contains("dark-mode")) {
+          darkLightText.textContent = "LIGHT";
+          localStorage.setItem("mode", "dark");
+        } else {
+          darkLightText.textContent = "DARK";
+          localStorage.setItem("mode", "light");
+        }
+      }
+
+      function detectAndApplySystemDarkMode() {
+        if (
+          window.matchMedia &&
+          window.matchMedia("(prefers-color-scheme: dark)").matches
+        ) {
+          document.body.classList.add("dark-mode");
+          document.getElementById("dark-light-text").textContent = "LIGHT";
+        } else {
+          document.body.classList.remove("dark-mode");
+          document.getElementById("dark-light-text").textContent = "DARK";
+        }
+      }
+
+      detectAndApplySystemDarkMode();
+
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", detectAndApplySystemDarkMode);
+    </script>
+
+    <script>
+      function scrollToSectionWithGap(className) {
+        var sections = document.getElementsByClassName(className);
+        var headerHeight = document.querySelector("header").offsetHeight;
+
+        if (sections.length > 0) {
+          var section = sections[0]; // Assuming there's only one section with this class
+
+          // Calculate the target scroll position including the gap
+          var targetScrollPosition = section.offsetTop - headerHeight - 55; // Subtracting header height and 55px gap
+
+          // Scroll to the section with the adjusted scroll position
+          window.scrollTo({
+            top: targetScrollPosition,
+            behavior: "smooth",
+          });
+        } else {
+          console.error("Section not found with class: " + className);
+        }
+      }
+    </script>
+
+    <script>
+      // Disable drag and drop for all images
+      document.addEventListener("DOMContentLoaded", function () {
+        var images = document.getElementsByTagName("img");
+        for (var i = 0; i < images.length; i++) {
+          images[i].ondragstart = function () {
+            return false;
+          };
+        }
+      });
+
+      // Disable context menu for all images
+      document.addEventListener("DOMContentLoaded", function () {
+        var images = document.getElementsByTagName("img");
+        for (var i = 0; i < images.length; i++) {
+          images[i].addEventListener("contextmenu", function (event) {
+            event.preventDefault();
+          });
+        }
+      });
+
+      // Disable context menu globally
+      document.addEventListener("contextmenu", function (event) {
+        event.preventDefault();
+      });
+
+      // Disable all keyboard events globally
+      document.addEventListener("keydown", function (event) {
+        event.preventDefault();
+      });
+
+      // Disable specific keyboard shortcut globally
+      document.addEventListener("keydown", function (event) {
+        if (
+          event.ctrlKey &&
+          event.shiftKey &&
+          (event.key === "I" || event.key === "i")
+        ) {
+          event.preventDefault();
+        }
+      });
+
+      // disable keyboard search input element only work
+
+      // Function to disable keyboard events globally except for A-Z, a-z, and numbers
+      function disableKeyboardEvents(event) {
+        // Get the search input element by its ID
+        var searchInput = document.getElementById("nethdimaSearch");
+        // Check if the event target is the search input
+        if (document.activeElement !== searchInput) {
+          // If focus is not on the search input
+          var charCode = event.keyCode || event.which;
+          // Prevent default behavior for Ctrl, Alt, Shift, and other special keys
+          if (
+            event.ctrlKey ||
+            event.altKey ||
+            event.shiftKey ||
+            charCode < 48 ||
+            charCode > 57
+          ) {
+            event.preventDefault();
+          }
+        }
+      }
+
+      // Disable all keyboard events globally
+      document.addEventListener("keydown", disableKeyboardEvents);
+
+      // Disable specific keyboard shortcuts globally
+      document.addEventListener("keydown", function (event) {
+        if (
+          (event.ctrlKey && (event.key === "p" || event.key === "P")) || // Ctrl+P
+          (event.ctrlKey && (event.key === "s" || event.key === "S")) // Ctrl+S
+        ) {
+          event.preventDefault();
+        }
+      });
     </script>
   </body>
 </html>
