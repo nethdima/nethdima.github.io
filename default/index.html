@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Nethdima Private Limited (NPL) is a premier platform for online radio and TV broadcasting, founded by Dinush Mangala in Anuradhapura, Sri Lanka. Established on December 21, 2023, Nethdima offers a variety of channels including Nethdima TV and Nethdima FM."
+    />
+    <meta
+      name="keywords"
+      content="Nethdima Private Limited, NPL, Nethdima TV, Nethdima FM, online radio, TV broadcasting, live streaming, internet radio, online TV, entertainment, shows, music, news, Dinush Mangala, Sri Lanka, Anuradhapura"
+    />
+    <meta name="author" content="Nethdima Private Limited (NPL)" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      property="og:title"
+      content="Nethdima Private Limited (NPL) - Broadcasting Excellence"
+    />
+    <meta
+      property="og:description"
+      content="Discover Nethdima Private Limited (NPL), founded by Dinush Mangala in Anuradhapura, Sri Lanka. Enjoy a variety of online radio and TV channels: Nethdima TV and Nethdima FM"
+    />
+    <meta property="og:image" content="nethdima-logo.png" />
+    <meta property="og:url" content="https://nethdima.github.io" />
+    <meta property="og:type" content="website" />
+    <title>Nethdima Private Limited (NPL) - Broadcasting Excellence</title>
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="media.css" />
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo">NETH<span style="color: orange">DIMA</span></a>
+      <div class="menu-toggle">&#9776;</div>
+      <nav>
+        <label class="menu">
+          TV / FM
+          <div class="sub-menu">
+            <div class="columns">
+              <div class="column">
+                <h4>Nethdima TV</h4>
+                <p class="openModal" data-modal-id="tv-modal">⦿ Live TV</p>
+                <a href="#">Programs</a>
+                <a href="#">Dramas</a>
+                <a href="#">Movies</a>
+                <a href="#">Music Shows</a>
+                <a href="#">Talk Shows</a>
+                <a href="#">Comedy Shows</a>
+                <a href="#">Educational Shows</a>
+                <a href="#">Kids Shows</a>
+                <a href="#">Reality Shows</a>
+                <a href="#">Documentaries</a>
+              </div>
+              <div class="column">
+                <h4>Nethdima FM</h4>
+                <p class="openModal" data-modal-id="fm-modal">⦿ Live Radio</p>
+                <a href="#">Programs</a>
+                <a href="#">Dramas</a>
+                <a href="#">News</a>
+                <a href="#">Music Shows</a>
+                <a href="#">Talk Shows</a>
+                <a href="#">Comedy Shows</a>
+                <a href="#">Educational Shows</a>
+                <a href="#">Kids Shows</a>
+                <a href="#">Interviews</a>
+                <a href="#">Sutras Reading</a>
+              </div>
+            </div>
+          </div>
+        </label>
+        <label class="menu">
+          Others
+          <div class="sub-menu">
+            <div class="columns">
+              <div class="column">
+                <h4>Not Available</h4>
+              </div>
+              <div class="column">
+                <h4>Not Available</h4>
+              </div>
+            </div>
+          </div>
+        </label>
+      </nav>
+    </header>
+
+    <div class="splash-screen">
+      <div class="splash-content">
+        <div class="name-heading">
+          WELCOME TO <br />
+          <span style="font-size: 0.9em">NETHDIMA PVT LTD</span>
+        </div>
+        <div class="greeting-text"></div>
+        <div class="digital-clock">
+          <sup class="clock-24-format"></sup>
+          <span class="clock-12-format"></span>
+          <div class="calendar-info"></div>
+          <span class="month-display"></span>
+          <div class="company-founded">
+            Founded: Dec 21, 2017 <br /><span class="time-since-founded"></span>
+          </div>
+        </div>
+        <div class="loading-animation">Please wait</div>
+      </div>
+    </div>
+
+    <div class="modal-box">
+      <div id="tv-modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3><span style="color: red">⦿</span> Live - Nethdima TV</h3>
+            <span class="close">&times;</span>
+          </div>
+          <div class="modal-body">
+            <div class="video-container">
+              <video-js
+                id="nethdima-tv"
+                class="video-js vjs-default-skin"
+              ></video-js>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="fm-modal" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3><span style="color: red">⦿</span> Live - Nethdima FM</h3>
+            <span class="close">&times;</span>
+          </div>
+          <div class="modal-body">
+            <div class="audio-player">
+              <div class="radio-name">
+                Nethdima FM
+                <span class="play-pause-button" id="playPauseButton">▶</span>
+              </div>
+              <audio
+                id="audioPlayer"
+                src="https://stream.zeno.fm/eownpnzhffvtv"
+              ></audio>
+              <div style="display: flex; justify-content: center">
+                <div class="play-time" id="playTime">00:00</div>
+                <div class="current-time" id="currentTime"></div>
+              </div>
+              <div class="current-date" id="currentDate"></div>
+              <div class="broadcast-text" id="broadcastText">
+                <span class="live-dot"></span>
+                Live Broadcasting
+              </div>
+              <div class="buffering-indicator" id="bufferingIndicator">
+                PLEASE WAIT
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="about" class="modal">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h3>About NPL</h3>
+            <span class="close">&times;</span>
+          </div>
+          <div class="modal-body">
+            <main>
+              <section>
+                <p>
+                  Nethdima Private Limited (NPL), founded by Dinush Mangala on
+                  December 21, 2017, in Anuradhapura, Sri Lanka, is dedicated to
+                  providing a diverse range of online radio and TV channels. Our
+                  mission is to deliver exceptional broadcasting with a focus on
+                  quality content and viewer satisfaction. We aim to become a
+                  leading platform for digital entertainment and information
+                  dissemination in Sri Lanka, offering unparalleled viewer
+                  experiences through innovative programming and cutting-edge
+                  technology.
+                </p>
+              </section>
+
+              <section>
+                <h3>Nethdima TV</h3>
+                <p>
+                  Nethdima TV offers a diverse range of television content aimed
+                  at providing an exceptional viewing experience. Our
+                  programming includes a variety of genres such as drama,
+                  comedy, documentaries, and news, catering to different
+                  audience interests and age groups. We strive to bring the best
+                  of local and international entertainment to our viewers,
+                  ensuring there is something for everyone.
+                </p>
+              </section>
+
+              <section>
+                <h3>Nethdima FM</h3>
+                <p>
+                  Nethdima FM is a premier destination for music, news, and
+                  entertainment. With a focus on delivering high-quality audio
+                  content, Nethdima FM broadcasts a wide range of music genres
+                  including pop, rock, classical, and traditional Sri Lankan
+                  music. Stay informed with our timely news updates and enjoy
+                  engaging entertainment shows hosted by talented presenters.
+                  Join us for a listening experience that resonates with your
+                  passions and interests.
+                </p>
+              </section>
+
+              <section>
+                <h3>Connect with Us</h3>
+
+                <p>
+                  Stay connected with us on social media to stay informed about
+                  our latest programs, special broadcasts, and exclusive
+                  behind-the-scenes content.
+                </p>
+
+                <h4>Social Media</h4>
+                <ul>
+                  <li>
+                    <a href="https://youtube.com/nethdima" target="_blank"
+                      >Youtube</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://facebook.com/nethdima" target="_blank"
+                      >Facebook</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://instagram.com/nethdima" target="_blank"
+                      >Instagram</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/nethdima" target="_blank"
+                      >Twitter</a
+                    >
+                  </li>
+                  <li>
+                    <a href="https://tiktok.com/nethdima" target="_blank"
+                      >Tiktok</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://linkedin.com/company/nethdima"
+                      target="_blank"
+                      >LinkedIn</a
+                    >
+                  </li>
+                </ul>
+
+                <h4>Contact Us</h4>
+                <ul>
+                  <li>
+                    <a href="mailto:indunilchathuranga@gmail.com">Email Us</a>
+                  </li>
+                  <li>
+                    <a href="https://whatsapp.com/nethdima" target="_blank"
+                      >Whatsapp</a
+                    >
+                  </li>
+                  <li><a href="tel:+94 741688487">Call Us</a></li>
+                </ul>
+                <p>
+                  Join our community of followers to be the first to know about
+                  exciting updates and events. Engage with us on your favorite
+                  platforms and be a part of our journey!
+                </p>
+              </section>
+            </main>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main></main>
+
+    <footer>
+      <a class="openModal" data-modal-id="about">About Us</a>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms and Conditions</a>
+      <p>
+        © 2017 - <span id="currentYear"></span> Nethdima. All rights reserved.
+      </p>
+    </footer>
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+    <script src="media.js"></script>
+    <script src="system.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
