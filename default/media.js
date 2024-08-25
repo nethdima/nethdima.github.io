@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
       ],
       currentPlaylistIndex: 0,
-      poster: "https://i.ibb.co/WHnwWqs/ezgif-3-e11dd90953.gif",
+      poster: "https://wallpaperaccess.com/full/2563963.jpg",
       posterPlaying: "",
       isPlaying: false,
     },
