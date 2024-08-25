@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
       ],
       currentPlaylistIndex: 0,
-      poster: "https://wallpaperaccess.com/full/2563963.jpg",
+      poster: "https://i.ibb.co/WHnwWqs/ezgif-3-e11dd90953.gif",
       posterPlaying: "",
       isPlaying: false,
     },
@@ -23,8 +23,8 @@ document.addEventListener("DOMContentLoaded", function () {
     "nethdima-tv": [
       {
         start: new Date("2024-07-02T06:00:00"),
-        end: new Date("2025-07-02T11:00:00"),
-        posterPlaying: "https://wallpapercave.com/wp/wp2763910.gif",
+        end: new Date("2055-12-02T11:00:00"),
+        posterPlaying: "https://i.ibb.co/WHnwWqs/ezgif-3-e11dd90953.gif",
       },
       {
         start: new Date("2024-07-02T11:00:00"),
