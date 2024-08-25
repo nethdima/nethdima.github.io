@@ -164,3 +164,47 @@ document.addEventListener("DOMContentLoaded", function () {
     localStorage.clear();
   });
 });
+
+
+// Function to check if an image is loaded successfully
+function isImageLoaded(img) {
+    return img.complete && img.naturalHeight !== 0;
+}
+
+// Function to load images from localStorage if available
+function loadImagesFromLocalStorage() {
+    const images = document.querySelectorAll('img');
+    images.forEach((img, index) => {
+        const savedImage = localStorage.getItem('image_' + index);
+        if (savedImage) {
+            img.src = savedImage;
+        }
+    });
+}
+
+// Function to save images to localStorage
+function saveImagesToLocalStorage() {
+    const images = document.querySelectorAll('img');
+    images.forEach((img, index) => {
+        img.addEventListener('load', () => {
+            if (isImageLoaded(img)) {
+                localStorage.setItem('image_' + index, img.src);
+            }
+        });
+
+        img.addEventListener('error', () => {
+            img.style.display = 'none'; // Hide broken images
+        });
+    });
+}
+
+// Initial function to start the process
+function initImageHandling() {
+    setTimeout(() => {
+        loadImagesFromLocalStorage();
+        saveImagesToLocalStorage();
+    }, 1000); // 1 second delay before starting image loading and saving
+}
+
+// Run the init function when the page loads
+window.onload = initImageHandling;
