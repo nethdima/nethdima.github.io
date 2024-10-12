@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="si">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nethdima Keyboard</title>
+    <meta
+      name="title"
+      content="Nethdima Private Limited - Broadcasting & Multi-Functional Services"
+    />
+    <meta
+      name="description"
+      content="Nethdima Private Limited provides internet television and radio broadcasting services. Established in 2017, we deliver quality entertainment, news, and more."
+    />
+    <meta
+      name="keywords"
+      content="Nethdima TV, Nethdima FM, internet television, radio broadcasting, entertainment, news, Sri Lanka"
+    />
+    <meta name="author" content="Dinush Mangala" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#000000" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nethdima.github.io" />
+    <meta
+      property="og:title"
+      content="Nethdima Private Limited - Broadcasting & Multi-Functional Services"
+    />
+    <meta
+      property="og:description"
+      content="Nethdima provides multi-functional services, including internet TV and radio broadcasting. Established in 2017, we offer quality entertainment and news."
+    />
+    <meta
+      property="og:image"
+      content="https://i.ibb.co/MZ1bX6s/nethdima-icon.png"
+    />
+    <meta property="og:site_name" content="Nethdima Private Limited" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://nethdima.github.io" />
+    <meta name="twitter:title" content="Nethdima Private Limited" />
+    <meta
+      name="twitter:description"
+      content="Nethdima Private Limited offers TV and radio broadcasting services. Providing entertainment and news since 2017."
+    />
+    <meta
+      name="twitter:image"
+      content="https://i.ibb.co/MZ1bX6s/nethdima-icon.png"
+    />
+    <meta name="twitter:site" content="@Nethdima" />
+    <meta name="twitter:creator" content="@Nethdima" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Nethdima" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta
+      name="msapplication-TileImage"
+      content="https://i.ibb.co/MZ1bX6s/nethdima-icon.png"
+    />
+    <meta name="application-name" content="Nethdima" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="rating" content="General" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="subject" content="Broadcasting & Multi-Functional Services" />
+    <meta name="coverage" content="Sri Lanka" />
+    <meta name="distribution" content="global" />
+    <meta name="copyright" content="Nethdima Private Limited" />
+    <link
+      rel="icon"
+      href="https://i.ibb.co/MZ1bX6s/nethdima-icon.png"
+      type="image/png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://i.ibb.co/MZ1bX6s/nethdima-icon.png"
+    />
+    <link rel="canonical" href="https://nethdima.github.io" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+        outline: none;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f5;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh; /* Full viewport height */
+      }
+
+      .container {
+        max-width: 800px;
+        background: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        border: 1px solid #007bff;
+        width: 100%; /* Ensure it fills the container */
+      }
+
+      h1 {
+        text-align: center;
+        color: #007bff;
+        font-size: 24px;
+        margin-bottom: 20px;
+      }
+
+      #textInput {
+        width: 100%;
+        height: 150px;
+        padding: 15px;
+        font-size: 16px;
+        border: 2px solid #007bff;
+        border-radius: 6px;
+        margin-bottom: 20px;
+        resize: none;
+      }
+
+      .button-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+      button {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 12px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 5px;
+        flex: 1 1 120px;
+        transition: background-color 0.3s, transform 0.2s;
+      }
+
+      button:hover {
+        background-color: #0057b3;
+        transform: translateY(-1px);
+      }
+
+      .active {
+        background-color: #004a9e;
+      }
+
+      button[data-value="si2"][disabled] {
+        background-color: #a9a9a9;
+        color: #535353;
+        border: 1px solid #a9a9a9;
+        cursor: not-allowed;
+        opacity: 0.5;
+      }
+      /* Modal styles */
+      #aboutModal {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        padding-top: 20px;
+      }
+
+      .modal-content {
+        margin: 0 auto;
+        max-width: 800px;
+        width: 80%;
+        background-color: #ffffff;
+        border-radius: 10px;
+        padding: 20px;
+        position: relative; /* Allow positioning of close button */
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        overflow-y: auto;
+        max-height: 80vh;
+        animation: fadeIn 0.3s ease;
+      }
+
+      .modal-content h2 {
+        text-align: center;
+        color: #007bff;
+        margin-bottom: 20px;
+      }
+
+      .close {
+        position: absolute; /* Positioning within modal content */
+        top: 15px;
+        right: 20px;
+        font-size: 15px;
+        cursor: pointer;
+        color: darkblue;
+        transition: color 0.3s;
+      }
+
+      .close:hover {
+        color: red;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .modal-content {
+          width: 90%;
+          max-height: 93vh;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>
+        නෙත්දිම යතුරු පුවරුව <br />
+        <span style="font-size: 14px">Version 1.0 ( 2024.10.05 )</span>
+      </h1>
+      <textarea
+        id="textInput"
+        placeholder="මයික් එක භාවිතා කර කතා කරන්න. නැතිනම් යතුරු පුවරුව භාවිතා කර ටයිප් කරන්න."
+        rows="10"
+        cols="50"
+        wrap="soft"
+      ></textarea>
+      <div class="button-container">
+        <button data-value="si1" class="keyboard-btn">🖮 ¹ සිංහල</button>
+        <button data-value="si2" disabled class="keyboard-btn">
+          🖮 ² සිංහල
+        </button>
+        <button data-value="en" class="keyboard-btn">🖮 ඉංග්‍රීසි</button>
+        <button id="startPauseButton">
+          <i class="fas fa-microphone"></i> කතා කරන්න
+        </button>
+        <button id="copyButton">
+          <i class="fas fa-copy"></i> පිටපත් කරන්න
+        </button>
+        <button id="deleteButton">
+          <i class="fas fa-trash"></i> සියල්ල මකන්න
+        </button>
+        <button id="aboutButton">
+          <i class="fas fa-info-circle"></i> තොරතුරු
+        </button>
+      </div>
+    </div>
+
+    <div id="aboutModal" style="display: none">
+      <div class="modal-content">
+        <sup class="close">Back</sup>
+        <h2 class="head-title">About Nethdima Keyboard</h2>
+        <p><strong>Developer:</strong> Nethdima Pvt Ltd</p>
+        <p><strong>Release Date:</strong> October 5, 2024</p>
+        <p><strong>Version:</strong> 1.0</p>
+        <p>
+          Nethdima Keyboard is a powerful web application designed to enhance
+          communication in Sinhala. It provides users with a virtual keyboard
+          and voice recognition capabilities, making it easy to type or speak in
+          Sinhala effortlessly.
+        </p>
+        <p><strong>Key Features:</strong></p>
+        <ul>
+          <li>
+            <strong>Virtual Keyboard:</strong> A user-friendly interface for
+            easy typing in Sinhala.
+          </li>
+          <li>
+            <strong>Voice Recognition:</strong> Speak directly into the app to
+            convert speech into text.
+          </li>
+          <li>
+            <strong>Custom Key Mapping:</strong> Tailor your typing experience
+            with customizable mappings.
+          </li>
+          <li>
+            <strong>Accessibility:</strong> Designed for users of all skill
+            levels.
+          </li>
+        </ul>
+        <p><strong>Usage Instructions:</strong></p>
+        <p>
+          - Use the virtual keyboard or microphone button to start typing.<br />
+          - Switch between Sinhala and English modes as needed.<br />
+          - Clear input or copy text using the provided buttons.
+        </p>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        let recognizing = false;
+        let activeKeyboard = "si1"; // Default keyboard
+        let inactivityTimeout;
+        let altKeyPressed = false;
+
+        // Initialize voice recognition
+        const SpeechRecognition =
+          window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+
+        recognition.onstart = () => {
+          recognizing = true;
+          document.getElementById("startPauseButton").innerHTML =
+            '<i class="fas fa-stop"></i> නවත්වන්න';
+        };
+
+        recognition.onend = () => {
+          recognizing = false;
+          document.getElementById("startPauseButton").innerHTML =
+            '<i class="fas fa-microphone"></i> කතා කරන්න';
+          clearInactivityTimeout(); // Clear timeout on end
+        };
+
+        recognition.onresult = (event) => {
+          const transcript =
+            Array.from(event.results)
+              .map((result) => result[0].transcript)
+              .join(" ") + " "; // Add a space at the end
+          const correctedTranscript = applyCorrections(transcript); // Apply corrections
+          typeCharacters(correctedTranscript); // Type characters live
+          resetInactivityTimeout(); // Reset timeout on new input
+        };
+
+        const typeCharacters = (text) => {
+          const textInput = document.getElementById("textInput");
+          textInput.value += text; // Append text directly
+          textInput.scrollTop = textInput.scrollHeight; // Auto-scroll to the bottom
+        };
+
+        const correctionsMap = {
+          ක්ර: "ක්‍ර",
+          ශ්ර: "ශ්‍ර",
+          ක්ෂ: "ක්‍ෂ",
+        };
+
+        const applyCorrections = (text) => {
+          Object.keys(correctionsMap).forEach((key) => {
+            const regex = new RegExp(key, "g");
+            text = text.replace(regex, correctionsMap[key]);
+          });
+          return text;
+        };
+
+        document
+          .getElementById("startPauseButton")
+          .addEventListener("click", () => {
+            recognizing ? recognition.stop() : recognition.start();
+          });
+
+        const getKeyMapping = (key) => {
+          const currentMap =
+            activeKeyboard === "si1"
+              ? sinhalaKeyMap1
+              : activeKeyboard === "si2"
+              ? sinhalaKeyMap2
+              : null;
+          return currentMap ? currentMap[key] || key : key;
+        };
+
+        // Handle keydown event
+        document.addEventListener("keydown", (event) => {
+          const key = event.key;
+
+          // Check for Alt key
+          if (event.altKey) {
+            altKeyPressed = true;
+          }
+
+          if (event.key.length > 1) return; // Allow system keys
+
+          const mappedKey = altKeyPressed
+            ? getAltClickMapping(key)
+            : getKeyMapping(key);
+
+          const textInput = document.getElementById("textInput");
+
+          // Handle text input
+          if (mappedKey) {
+            textInput.value += mappedKey; // Append mapped key directly
+            textInput.scrollTop = textInput.scrollHeight; // Auto-scroll to the bottom
+          }
+
+          event.preventDefault(); // Prevent default action (typing)
+          textInput.value = applyCorrections(textInput.value); // Apply corrections
+        });
+
+        // Handle keyup event to reset Alt key status
+        document.addEventListener("keyup", (event) => {
+          if (event.key === "Alt") {
+            altKeyPressed = false;
+          }
+        });
+
+        const getAltClickMapping = (key) => {
+          if (activeKeyboard === "si1") {
+            return altClickMap1[key] || key;
+          } else if (activeKeyboard === "si2") {
+            return altClickMap2[key] || key;
+          }
+          return key;
+        };
+
+        // Set active keyboard on button click
+        const keyboardButtons = document.querySelectorAll(".keyboard-btn");
+        keyboardButtons.forEach((button) => {
+          button.addEventListener("click", (e) => {
+            activeKeyboard = e.currentTarget.getAttribute("data-value");
+            keyboardButtons.forEach((btn) => btn.classList.remove("active"));
+            e.currentTarget.classList.add("active");
+            setRecognitionLanguage(); // Update recognition language
+          });
+        });
+
+        const setRecognitionLanguage = () => {
+          recognition.lang =
+            activeKeyboard === "si1" || activeKeyboard === "si2"
+              ? "si-LK"
+              : "en-US";
+        };
+
+        const resetInactivityTimeout = () => {
+          clearInactivityTimeout();
+          inactivityTimeout = setTimeout(() => {
+            recognition.stop();
+          }, 5000); // Stop the microphone after 5 seconds of inactivity
+        };
+
+        const clearInactivityTimeout = () => {
+          clearTimeout(inactivityTimeout);
+        };
+
+        document.getElementById("copyButton").addEventListener("click", () => {
+          const textInput = document.getElementById("textInput");
+
+          // Get the selected text (if any)
+          const selectedText = textInput.value.substring(
+            textInput.selectionStart,
+            textInput.selectionEnd
+          );
+
+          // Use selected text if there's any; otherwise, use all text
+          const textToCopy = selectedText || textInput.value;
+
+          if (textToCopy.trim() !== "") {
+            navigator.clipboard
+              .writeText(textToCopy)
+              .then(() => {
+                changeButtonColor("copyButton", "green"); // Change color for 1 second
+              })
+              .catch((err) => {
+                console.error("Failed to copy: ", err);
+              });
+          }
+        });
+
+        document
+          .getElementById("deleteButton")
+          .addEventListener("click", () => {
+            const textInput = document.getElementById("textInput");
+            if (textInput.value.trim() !== "") {
+              textInput.value = ""; // Clear the input
+              changeButtonColor("deleteButton", "red"); // Change color for 1 second
+            }
+          });
+
+        const changeButtonColor = (buttonId, color) => {
+          const button = document.getElementById(buttonId);
+          const originalColor = button.style.backgroundColor;
+          let isColor = false;
+
+          const interval = setInterval(() => {
+            button.style.backgroundColor = isColor ? originalColor : color;
+            isColor = !isColor;
+          }, 100);
+
+          setTimeout(() => {
+            clearInterval(interval);
+            button.style.backgroundColor = originalColor; // Reset to original
+          }, 1000); // 1 second
+        };
+
+        // Set default active keyboard button and recognition language on page load
+        const defaultButton = document.querySelector(
+          `[data-value="${activeKeyboard}"]`
+        );
+        if (defaultButton) {
+          defaultButton.classList.add("active");
+          setRecognitionLanguage(); // Initialize language setting
+        }
+
+        // Reset inactivity timeout when the user interacts with the text input
+        const textInput = document.getElementById("textInput");
+        textInput.addEventListener("input", resetInactivityTimeout);
+        textInput.addEventListener("focus", resetInactivityTimeout);
+      });
+
+      const sinhalaKeyMap1 = {
+        "`": "්‍ර",
+        1: "1",
+        2: "2",
+        3: "3",
+        4: "4",
+        5: "5",
+        6: "6",
+        7: "7",
+        8: "8",
+        9: "9",
+        0: "0",
+        "-": "-",
+        "=": "=",
+        q: "ු",
+        w: "අ",
+        e: "ැ",
+        r: "ර",
+        t: "එ",
+        y: "හ",
+        u: "ම",
+        i: "ස",
+        o: "ද",
+        p: "ච",
+        "[": "ඤ",
+        "]": ";",
+        a: "්",
+        s: "ි",
+        d: "ා",
+        f: "‍ෙ",
+        g: "ට",
+        h: "ය",
+        j: "ව",
+        k: "න",
+        l: "ක",
+        ";": "ත",
+        "'": ".",
+        "\\": "්‍",
+        z: "‘",
+        x: "ං",
+        c: "ජ",
+        v: "ඩ",
+        b: "ඉ",
+        n: "බ",
+        m: "ප",
+        ",": "ල",
+        ".": "ග",
+        "/": "/",
+        "~": "ර්‍",
+        "!": "!",
+        "@": "@",
+        "#": "#",
+        $: "$",
+        "%": "%",
+        "^": "^",
+        "&": "&",
+        "*": "*",
+        "(": "(",
+        ")": ")",
+        _: "_",
+        "+": "+",
+        Q: "ූ",
+        W: "උ",
+        E: "ෑ",
+        R: "ඍ",
+        T: "ඔ",
+        Y: "ශ",
+        U: "ඹ",
+        I: "ෂ",
+        O: "ධ",
+        P: "ඡ",
+        "{": "ඥ",
+        "}": ":",
+        A: "ෟ",
+        S: "ී",
+        D: "ෘ",
+        F: "‍ෆ",
+        G: "ඨ",
+        H: "්‍ය",
+        J: "ළු",
+        K: "ණ",
+        L: "ඛ",
+        ":": "ථ",
+        '"': ",",
+        "|": "්‍",
+        Z: "“",
+        X: "ඞ",
+        C: "ඣ",
+        V: "ඪ",
+        B: "ඊ",
+        N: "භ",
+        M: "ඵ",
+        "<": "ළ",
+        ">": "ඝ",
+        "?": "?",
+      };
+
+      const sinhalaKeyMap2 = {
+        r: "ර",
+        u: "ු",
+        e: "එ",
+        a: "ආ",
+        o: "ඔ",
+        i: "ඉ",
+      };
+
+      const altClickMap1 = {
+        c: "ඏ",
+        d: "ඳ",
+        v: "ඟ",
+        u: "ඬ",
+        l: "෴",
+        p: "෦",
+      };
+
+      const altClickMap2 = {
+        c: "g",
+        d: "ඳ",
+        v: "ඟ",
+        u: "ඬ",
+        l: "෴",
+        p: "෦",
+      };
+
+      document.getElementById("aboutButton").addEventListener("click", () => {
+        document.getElementById("aboutModal").style.display = "block";
+      });
+
+      document.querySelector(".close").addEventListener("click", () => {
+        document.getElementById("aboutModal").style.display = "none";
+      });
+
+      // Close the modal when clicking outside of it
+      window.addEventListener("click", (event) => {
+        const modal = document.getElementById("aboutModal");
+        if (event.target === modal) {
+          modal.style.display = "none";
+        }
+      });
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

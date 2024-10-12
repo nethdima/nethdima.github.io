@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Nethdima - Broadcasting Media Production & Multi-Functional Services
+    </title>
+    <meta
+      name="title"
+      content="Nethdima Private Limited - Broadcasting & Multi-Functional Services"
+    />
+    <meta
+      name="description"
+      content="Nethdima Private Limited provides internet television and radio broadcasting services. Established in 2017, we deliver quality entertainment, news, and more."
+    />
+    <meta
+      name="keywords"
+      content="Nethdima TV, Nethdima FM, internet television, radio broadcasting, entertainment, news, Sri Lanka"
+    />
+    <meta name="author" content="Dinush Mangala" />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#000000" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://nethdima.github.io" />
+    <meta
+      property="og:title"
+      content="Nethdima Private Limited - Broadcasting & Multi-Functional Services"
+    />
+    <meta
+      property="og:description"
+      content="Nethdima provides multi-functional services, including internet TV and radio broadcasting. Established in 2017, we offer quality entertainment and news."
+    />
+    <meta
+      property="og:image"
+      content="https://i.ibb.co/MZ1bX6s/nethdima-icon.png"
+    />
+    <meta property="og:site_name" content="Nethdima Private Limited" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://nethdima.github.io" />
+    <meta name="twitter:title" content="Nethdima Private Limited" />
+    <meta
+      name="twitter:description"
+      content="Nethdima Private Limited offers TV and radio broadcasting services. Providing entertainment and news since 2017."
+    />
+    <meta
+      name="twitter:image"
+      content="https://i.ibb.co/MZ1bX6s/nethdima-icon.png"
+    />
+    <meta name="twitter:site" content="@Nethdima" />
+    <meta name="twitter:creator" content="@Nethdima" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Nethdima" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="msapplication-TileColor" content="#000000" />
+    <meta
+      name="msapplication-TileImage"
+      content="https://i.ibb.co/MZ1bX6s/nethdima-icon.png"
+    />
+    <meta name="application-name" content="Nethdima" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="rating" content="General" />
+    <meta name="referrer" content="no-referrer" />
+    <meta name="subject" content="Broadcasting & Multi-Functional Services" />
+    <meta name="coverage" content="Sri Lanka" />
+    <meta name="distribution" content="global" />
+    <meta name="copyright" content="Nethdima Private Limited" />
+    <link
+      rel="icon"
+      href="https://i.ibb.co/MZ1bX6s/nethdima-icon.png"
+      type="image/png"
+    />
+    <link
+      rel="apple-touch-icon"
+      href="https://i.ibb.co/MZ1bX6s/nethdima-icon.png"
+    />
+    <link rel="canonical" href="https://nethdima.github.io" />
+    <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="media.css" />
+    <link rel="alternate" href="https://nethdima.github.io" hreflang="en" />
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        text-decoration: none;
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+      }
+
+      header {
+        padding: 20px;
+        background: linear-gradient(to right, #0157dc, #141580);
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      header a {
+        color: white;
+      }
+
+      header .info h3 {
+        margin: 0;
+        font-size: 24px;
+        letter-spacing: 1px;
+      }
+
+      header .info h6 {
+        margin: 0;
+        font-weight: normal;
+        font-size: 14px;
+      }
+
+      header .logos {
+        display: flex;
+      }
+
+      header .logos a {
+        margin: 0 10px;
+        transition: transform 0.2s;
+      }
+
+      header .logos a:hover {
+        transform: scale(1.1);
+      }
+
+      header .logos img {
+        width: 60px;
+        cursor: pointer;
+        background-color: white;
+        border-radius: 5px;
+      }
+
+      main {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      main h2 {
+        margin: 10px 0;
+        pad: 10px;
+        border-bottom: 1px solid black;
+      }
+
+      main p {
+        line-height: 1.3;
+        text-align: justify;
+      }
+
+      main .left {
+        width: 60%;
+        padding: 20px;
+      }
+
+      main .right {
+        width: 40%;
+        padding: 10px;
+        background-color: #1011611e;
+      }
+
+      .content-section {
+        display: none;
+      }
+
+      .content-section.active {
+        display: block;
+      }
+
+      .menu {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        background-color: transparent;
+      }
+
+      .menu li {
+        flex-grow: 1;
+        margin: 5px;
+      }
+
+      .menu a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        border: 2px solid white;
+        border-radius: 8px;
+        background-color: #333;
+        transition: all 0.3s ease;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .menu a:hover {
+        background-color: #575757;
+        color: #ffd700;
+        border-color: #ffd700;
+      }
+
+      footer {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 20px;
+        padding-top: 15px;
+        text-align: center;
+        background: linear-gradient(to right, #0157dc, #141580);
+        color: white;
+      }
+
+      footer .social a {
+        padding-right: 8px;
+        color: #f8f9fa;
+      }
+
+      footer p {
+        margin: 0;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        header {
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        header .info h3 {
+          font-size: 20px;
+        }
+
+        header .info h6 {
+          font-size: 12px;
+        }
+
+        header .logos {
+          margin-top: 10px;
+        }
+
+        header .logos img {
+          width: 95px;
+        }
+
+        main {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          .left,
+          .right {
+            width: 100%;
+          }
+        }
+
+        footer {
+          padding: 15px;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        footer p {
+          margin-top: 10px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="info">
+        <a href="https://nethdima.github.io/"
+          ><h3>Nethdima Private Limited</h3>
+          <h6>Broadcasting Media Production & Multi-Functional Services</h6>
+        </a>
+      </div>
+      <div class="logos">
+        <a href="https://nethdima.github.io">
+          <img src="https://i.ibb.co/dg0L8qK/nethdima-home.png" alt="Home" />
+        </a>
+        <a onclick="showSection('tv')">
+          <img src="https://i.ibb.co/vL2mC4D/nethdima-tv.png" alt="Live TV" />
+        </a>
+        <a onclick="showSection('fm')">
+          <img src="https://i.ibb.co/myZ5zy6/nethdima-fm.png" alt="Live FM" />
+        </a>
+      </div>
+    </header>
+    <main>
+      <div class="left">
+        <section id="home" class="content-section active">
+          <h2>About</h2>
+          <p>
+            Nethdima Private Limited is a private company providing
+            multi-functional services including internet television and radio
+            broadcasting. Founded in 2017 by Dinush Mangala in Anuradhapura, Sri
+            Lanka, Nethdima Private Limited brings you the channels Nethdima TV
+            and Nethdima FM, offering quality entertainment, news, and more. Our
+            mission is to deliver exceptional broadcasting with a focus on
+            quality content and viewer satisfaction. We aim to become a leading
+            platform for digital entertainment and information dissemination in
+            Sri Lanka, offering unparalleled viewer experiences through
+            innovative programming and cutting-edge technology.
+          </p>
+        </section>
+
+        <section id="tv" class="content-section">
+          <h2>Nethdima TV</h2>
+          <p>
+            Nethdima TV offers a diverse range of television content designed to
+            provide an exceptional viewing experience. Our programming includes
+            genres such as drama, comedy, documentaries, and news, catering to
+            various interests and age groups. We strive to bring the best of
+            local and international entertainment to our viewers, ensuring there
+            is something for everyone.
+          </p>
+          <div style="margin-top: 20px">
+            <div class="video-container">
+              <video-js
+                id="nethdima-tv"
+                class="video-js vjs-default-skin"
+              ></video-js>
+            </div>
+          </div>
+
+          <ul class="menu">
+            <li><a href="#">Programs</a></li>
+            <li><a href="#">Dramas</a></li>
+            <li><a href="#">Movies</a></li>
+            <li><a href="#">Music Shows</a></li>
+            <li><a href="#">Talk Shows</a></li>
+            <li><a href="#">Comedy Shows</a></li>
+            <li><a href="#">Educational Shows</a></li>
+            <li><a href="#">Kids Shows</a></li>
+            <li><a href="#">Reality Shows</a></li>
+            <li><a href="#">Documentaries</a></li>
+          </ul>
+        </section>
+
+        <section id="fm" class="content-section">
+          <h2>Nethdima FM</h2>
+          <p>
+            Nethdima FM is a premier destination for music, news, and
+            entertainment. With a focus on delivering high-quality audio
+            content, Nethdima FM broadcasts a wide range of music genres
+            including pop, rock, classical, and traditional Sri Lankan music.
+            Stay informed with our timely news updates and enjoy engaging
+            entertainment shows hosted by talented presenters. Join us for a
+            listening experience that resonates with your passions and
+            interests.
+          </p>
+          <div class="audio-player">
+            <audio
+              id="audioPlayer"
+              src="https://stream.zeno.fm/eownpnzhffvtv"
+            ></audio>
+            <div class="play-pause-container">
+              <span class="play-pause-button" id="playPauseButton">▶</span>
+              <div class="play-time" id="playTime">00:00</div>
+              <div class="current-time" id="currentTime"></div>
+            </div>
+            <div class="current-date" id="currentDate"></div>
+            <div class="broadcast-text" id="broadcastText">
+              <span class="live-dot"></span>
+              Live Broadcasting
+            </div>
+            <div class="buffering-indicator" id="bufferingIndicator">
+              PLEASE WAIT
+            </div>
+          </div>
+          <ul class="menu">
+            <li><a href="#">Programs</a></li>
+            <li><a href="#">Dramas</a></li>
+            <li><a href="#">News</a></li>
+            <li><a href="#">Music Shows</a></li>
+            <li><a href="#">Talk Shows</a></li>
+            <li><a href="#">Comedy Shows</a></li>
+            <li><a href="#">Educational Shows</a></li>
+            <li><a href="#">Kids Shows</a></li>
+            <li><a href="#">Interviews</a></li>
+            <li><a href="#">Sutras Reading</a></li>
+          </ul>
+        </section>
+      </div>
+      <div class="right">
+        <section>
+          <h2>Apps</h2>
+          <ul>
+            <li><a href="keyboard.html"> 01. Nethdima Keyboard</a></li>
+          </ul>
+        </section>
+      </div>
+    </main>
+    <footer>
+      <div class="social">
+        <a
+          href="https://youtube.com/nethdima"
+          target="_blank"
+          aria-label="YouTube"
+        >
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a
+          href="https://facebook.com/nethdima"
+          target="_blank"
+          aria-label="Facebook"
+        >
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a
+          href="https://instagram.com/nethdima"
+          target="_blank"
+          aria-label="Instagram"
+        >
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a
+          href="https://twitter.com/nethdima"
+          target="_blank"
+          aria-label="Twitter"
+        >
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a
+          href="https://tiktok.com/nethdima"
+          target="_blank"
+          aria-label="TikTok"
+        >
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a
+          href="https://linkedin.com/company/nethdima"
+          target="_blank"
+          aria-label="LinkedIn"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+      <p>
+        © 2017 - <span id="currentYear"></span> Nethdima. All rights reserved.
+      </p>
+    </footer>
+    <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
+    <script src="media.js"></script>
+    <script>
+      document.getElementById("currentYear").textContent =
+        new Date().getFullYear();
+
+      function showSection(sectionId) {
+        const sections = document.querySelectorAll(".content-section");
+        sections.forEach((section) => {
+          section.classList.remove("active");
+        });
+
+        document.getElementById(sectionId).classList.add("active");
+      }
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>
