@@ -88,13 +88,6 @@
     <link rel="stylesheet" href="media.css" />
     <link rel="alternate" href="https://nethdima.github.io" hreflang="en" />
     <style>
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        text-decoration: none;
-      }
-
       body {
         font-family: Arial, sans-serif;
         background-color: #f8f9fa;
@@ -148,7 +141,6 @@
         background-color: white;
         border-radius: 5px;
       }
-
       main {
         flex: 1;
         display: flex;
@@ -158,8 +150,11 @@
 
       main h2 {
         margin: 10px 0;
-        pad: 10px;
-        border-bottom: 1px solid black;
+        background: linear-gradient(to right, #0157dc, #141580);
+        background-clip: text;
+        -webkit-background-clip: text;
+        color: transparent;
+        border-bottom: 1px solid #0157dc;
       }
 
       main p {
@@ -169,13 +164,12 @@
 
       main .left {
         width: 60%;
-        padding: 20px;
+        padding: 10px;
       }
 
       main .right {
         width: 40%;
         padding: 10px;
-        background-color: #1011611e;
       }
 
       .content-section {
@@ -223,6 +217,42 @@
         border-color: #ffd700;
       }
 
+      .appsmenu {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        background-color: transparent;
+      }
+
+      .appsmenu li {
+        flex-grow: 1;
+        margin: 5px;
+      }
+
+      .appsmenu a {
+        display: block;
+        color: white;
+        text-align: center;
+        padding: 12px;
+        text-decoration: none;
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        border: 2px solid white;
+        border-radius: 8px;
+        background-color: #007bff;
+        transition: all 0.3s ease;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .appsmenu a:hover {
+        background-color: #0057b3; 
+        color: white; 
+      }
+
       footer {
         display: flex;
         justify-content: space-between;
@@ -242,7 +272,7 @@
         margin: 0;
       }
 
-      /* Responsive Design */
+      /* Responsive Styles */
       @media (max-width: 768px) {
         header {
           flex-direction: column;
@@ -271,11 +301,12 @@
           display: flex;
           flex-direction: column;
           justify-content: center;
-
-          .left,
-          .right {
-            width: 100%;
-          }
+          flex-direction: column; 
+          align-items: center;
+        }
+        .left,
+        .right {
+          width: 100%;
         }
 
         footer {
@@ -286,6 +317,35 @@
 
         footer p {
           margin-top: 10px;
+        }
+
+        main .left,
+        main .right {
+          width: 100%;
+        }
+
+        main .right {
+          padding: 15px;
+        }
+      }
+
+      @media (max-width: 360px) {
+        header .info h3 {
+          font-size: 5vw;
+        }
+
+        header .info h6 {
+          font-size: 3.2vw;
+        }
+        header .logos img {
+          width: 100%;
+        }
+        main h2 {
+          font-size: 1.5em;
+        }
+
+        main p {
+          font-size: 0.9em;
         }
       }
     </style>
@@ -408,9 +468,9 @@
       </div>
       <div class="right">
         <section>
-          <h2>Apps</h2>
-          <ul>
-            <li><a href="keyboard.html"> 01. Nethdima Keyboard</a></li>
+          <h2>Our Apps</h2>
+          <ul class="appsmenu">
+            <li><a href="/ND Page/keyboard/"> 01. Nethdima Keyboard</a></li>
           </ul>
         </section>
       </div>
@@ -418,14 +478,20 @@
     <footer>
       <div class="social">
         <a
-          href="https://youtube.com/nethdima"
+          href="https://youtube.com/@nethdima"
           target="_blank"
           aria-label="YouTube"
         >
-          <i class="fab fa-youtube"></i>
+          <i class="fab fa-youtube"></i> </a
+        ><a
+          href="https://tiktok.com/@indunilchathurangaonline"
+          target="_blank"
+          aria-label="TikTok"
+        >
+          <i class="fab fa-tiktok"></i>
         </a>
         <a
-          href="https://facebook.com/nethdima"
+          href="https://facebook.com/indunilchathurangaonline"
           target="_blank"
           aria-label="Facebook"
         >
@@ -445,13 +511,7 @@
         >
           <i class="fab fa-twitter"></i>
         </a>
-        <a
-          href="https://tiktok.com/nethdima"
-          target="_blank"
-          aria-label="TikTok"
-        >
-          <i class="fab fa-tiktok"></i>
-        </a>
+
         <a
           href="https://linkedin.com/company/nethdima"
           target="_blank"
