@@ -88,6 +88,10 @@
     <link rel="stylesheet" href="media.css" />
     <link rel="alternate" href="https://nethdima.github.io" hreflang="en" />
     <style>
+      * {
+        text-decoration: none;
+      }
+
       body {
         font-family: Arial, sans-serif;
         background-color: #f8f9fa;
@@ -471,9 +475,7 @@
           <h2>Our Apps</h2>
           <ul class="appsmenu">
             <li>
-              <a href="./keyboard/"
-                >01. <i class="fas fa-keyboard"></i> Nethdima Keyboard</a
-              >
+              <a href="./keyboard/">Nethdima Keyboard</a>
             </li>
           </ul>
         </section>
@@ -535,12 +537,70 @@
         new Date().getFullYear();
 
       function showSection(sectionId) {
+        // Pause media for the current active section
+        pauseMediaForSection();
+
+        // Hide all sections
         const sections = document.querySelectorAll(".content-section");
         sections.forEach((section) => {
           section.classList.remove("active");
         });
 
-        document.getElementById(sectionId).classList.add("active");
+        // Show the active section
+        const activeSection = document.getElementById(sectionId);
+        if (activeSection) {
+          activeSection.classList.add("active");
+          changeSection(sectionId);
+          // Auto-play media for the active section
+          playMediaForSection(activeSection);
+
+          // Auto-refresh the section after a specific time (e.g., 5 minutes)
+          setTimeout(() => {
+            location.reload();
+          }, 300000); // Change 300000 to the desired interval in milliseconds
+        }
+      }
+
+      function pauseMediaForSection() {
+        // Logic to pause media for the currently active section
+        const mediaElements = document.querySelectorAll(
+          ".content-section.active audio, .content-section.active video"
+        );
+        mediaElements.forEach((media) => {
+          media.pause(); // Pause playback
+        });
+      }
+
+      function playMediaForSection(section) {
+        // Logic to play media for the active section
+        const mediaElements = section.querySelectorAll("audio, video");
+        mediaElements.forEach((media) => {
+          media.play(); // Start playback
+        });
+      }
+
+      function changeSection(sectionId) {
+        // Change title and URL based on the section
+        if (sectionId === "tv") {
+          document.title = "Nethdima TV - Live Streaming";
+          updateURL("Nethdima-TV");
+        } else if (sectionId === "fm") {
+          document.title = "Nethdima FM - Live Radio";
+          updateURL("Nethdima-FM");
+        } else {
+          document.title =
+            "Nethdima - Broadcasting Media Production & Multi-Functional Services";
+          updateURL("");
+        }
+      }
+
+      function updateURL(section) {
+        const baseUrl = window.location.origin;
+        if (section) {
+          window.history.pushState({}, "", `${baseUrl}/${section}`);
+        } else {
+          window.history.pushState({}, "", baseUrl);
+        }
       }
     </script>
     <script src="script.js"></script>
